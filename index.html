@@ -443,6 +443,22 @@
   </div>
 
 <script>
+  // Перехват и сохранение UTM-меток в sessionStorage при первом входе на страницу
+  (function() {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+      utmParams.forEach(param => {
+        const value = urlParams.get(param);
+        if (value) {
+          sessionStorage.setItem(param, value);
+        }
+      });
+    } catch (e) {
+      console.error('Ошибка сохранения UTM-меток:', e);
+    }
+  })();
+
   // TIMER — мягкий «импульс сейчас», 15 минут, свой для каждого посетителя
   (function(){
     var KEY='ceremony_impulse_timer';
@@ -473,14 +489,61 @@
   function closeLegal(){ document.getElementById('legalModal').classList.remove('active'); document.body.style.overflow=''; }
   document.getElementById('legalModal').addEventListener('click',function(e){ if(e.target===this) closeLegal(); });
 
-  // TODO: SendPulse CRM — отправка лида и редирект на оплату
-  // 1. Получить access_token: POST https://api.sendpulse.com/oauth/access_token
-  // 2. Создать контакт: POST https://api.sendpulse.com/crm/v1/contacts
-  // 3. Редирект: window.location.href = 'ССЫЛКА_НА_ОПЛАТУ';
-  document.getElementById('buyForm').addEventListener('submit', function (e) {
+  // SendPulse CRM — отправка лида и редирект на оплату
+  document.getElementById('buyForm').addEventListener('submit', async function (e) {
     e.preventDefault();
-    // developer: добавь сюда SendPulse API логику
-    // window.location.href = 'ССЫЛКА_НА_ОПЛАТУ';
+    
+    const form = this;
+    const submitBtn = form.querySelector('.pay-submit');
+    const originalBtnText = submitBtn.textContent;
+    
+    // Получаем данные из полей
+    const name = document.getElementById('m-name').value.trim();
+    const phone = document.getElementById('m-phone').value.trim();
+    const telegram = document.getElementById('m-tg').value.trim();
+    
+    // Блокируем кнопку и меняем текст для индикации загрузки
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Обработка заказа...';
+    submitBtn.style.opacity = '0.7';
+    submitBtn.style.cursor = 'not-allowed';
+    
+    // Считываем сохраненные UTM-метки из sessionStorage
+    const utm = {};
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(param => {
+      const value = sessionStorage.getItem(param);
+      if (value) {
+        utm[param] = value;
+      }
+    });
+
+    try {
+      const response = await fetch('/api/pay', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, phone, telegram, utm })
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok && data.success && data.paymentUrl) {
+        // Перенаправляем на платежный шлюз
+        window.location.href = data.paymentUrl;
+      } else {
+        throw new Error(data.error || 'Не удалось сгенерировать ссылку для оплаты.');
+      }
+    } catch (err) {
+      console.error('Ошибка оплаты:', err);
+      alert('Произошла ошибка при оформлении заказа: ' + err.message + '\nПожалуйста, попробуйте еще раз или обратитесь в поддержку.');
+      
+      // Возвращаем кнопку в исходное состояние
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
+      submitBtn.style.opacity = '';
+      submitBtn.style.cursor = '';
+    }
   });
 </script>
 
