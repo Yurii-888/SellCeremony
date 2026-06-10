@@ -104,6 +104,7 @@ export default async function handler(req, res) {
     }
 
     const contactName = `${name} (${telegram})${utmString}`;
+    const cleanPhone = phone.replace(/\D/g, ''); // Удаляем любые символы, кроме цифр (+, пробелы и т.д.)
 
     const contactRes = await fetch('https://api.sendpulse.com/crm/v1/contacts', {
       method: 'POST',
@@ -112,10 +113,11 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: contactName,
+        firstName: contactName,
+        lastName: '',
         phones: [
           {
-            phone: phone,
+            phone: cleanPhone,
             type: 'mobile'
           }
         ]
