@@ -57,28 +57,36 @@ export default async function handler(req, res) {
       return res.status(502).json({ success: false, error: 'Не получен токен авторизации от SendPulse.' });
     }
 
-    // 2. Определение ID платежной системы
+    // 2. Определение ID и типа платежной системы
     let paymentSystemId = process.env.SENDPULSE_PAYMENT_SYSTEM_ID;
+    let paymentType = '';
 
-    if (!paymentSystemId) {
-      console.log('SENDPULSE_PAYMENT_SYSTEM_ID не задан. Запрашиваем методы оплаты через API...');
-      const methodsRes = await fetch('https://api.sendpulse.com/crm/v1/payments/user-payment-methods', {
-        headers: {
-          'Authorization': `Bearer ${accessToken}`
-        }
-      });
+    console.log('Запрашиваем методы оплаты через API...');
+    const methodsRes = await fetch('https://api.sendpulse.com/crm/v1/payments/user-payment-methods', {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    });
 
-      if (methodsRes.ok) {
-        const methodsData = await methodsRes.json();
-        console.log('Доступные методы оплаты:', JSON.stringify(methodsData));
-        const list = Array.isArray(methodsData) ? methodsData : (methodsData.result || methodsData.data || []);
-        
-        // Находим первый активный метод оплаты (статус 1 или 2 означает активный)
-        const activeMethod = list.find(m => m.status === 1 || m.status === 2 || m.active === true || m.status === 'active') || list[0];
-        if (activeMethod) {
-          paymentSystemId = activeMethod.paymentId || activeMethod.id;
-          console.log(`Автоматически выбран платежный метод: ${activeMethod.name || paymentSystemId} (ID: ${paymentSystemId})`);
-        }
+    if (methodsRes.ok) {
+      const methodsData = await methodsRes.json();
+      console.log('Доступные методы оплаты:', JSON.stringify(methodsData));
+      const list = Array.isArray(methodsData) ? methodsData : (methodsData.result || methodsData.data || []);
+      
+      let selectedMethod;
+      if (paymentSystemId) {
+        selectedMethod = list.find(m => String(m.paymentId || m.id) === String(paymentSystemId));
+      }
+      
+      if (!selectedMethod) {
+        // Находим активный метод оплаты (статус 1 или 2 означает активный)
+        selectedMethod = list.find(m => m.status === 1 || m.status === 2 || m.active === true || m.status === 'active' || String(m.status) === '2') || list[0];
+      }
+
+      if (selectedMethod) {
+        paymentSystemId = selectedMethod.paymentId || selectedMethod.id;
+        paymentType = selectedMethod.paymentType || selectedMethod.type || 'Wayforpay';
+        console.log(`Выбран платежный метод: ${selectedMethod.name || paymentSystemId} (Тип: ${paymentType}, ID: ${paymentSystemId})`);
       }
     }
 
@@ -90,21 +98,20 @@ export default async function handler(req, res) {
     }
 
     // 3. Создание контакта в CRM
-    // Никнейм Телеграм и UTM-метки сохраняем в имени для наглядности в CRM
-    let utmString = '';
-    if (utm && typeof utm === 'object') {
-      const parts = [];
-      if (utm.utm_source) parts.push(utm.utm_source);
-      if (utm.utm_medium) parts.push(utm.utm_medium);
-      if (utm.utm_campaign) parts.push(utm.utm_campaign);
-      
-      if (parts.length > 0) {
-        utmString = ` [utm: ${parts.join(' / ')}]`;
-      }
-    }
+    const cleanPhone = phone.replace(/\D/g, ''); // Удаляем любые символы, кроме цифр
 
-    const contactName = `${name} (${telegram})${utmString}`;
-    const cleanPhone = phone.replace(/\D/g, ''); // Удаляем любые символы, кроме цифр (+, пробелы и т.д.)
+    // Формируем массив кастомных атрибутов (полей) контакта
+    const attributes = [];
+    if (telegram) {
+      attributes.push({ name: 'Telegram', type: 0, value: telegram });
+    }
+    if (utm && typeof utm === 'object') {
+      if (utm.utm_source) attributes.push({ name: 'utm_source', type: 0, value: utm.utm_source });
+      if (utm.utm_medium) attributes.push({ name: 'utm_medium', type: 0, value: utm.utm_medium });
+      if (utm.utm_campaign) attributes.push({ name: 'utm_campaign', type: 0, value: utm.utm_campaign });
+      if (utm.utm_content) attributes.push({ name: 'utm_content', type: 0, value: utm.utm_content });
+      if (utm.utm_term) attributes.push({ name: 'utm_term', type: 0, value: utm.utm_term });
+    }
 
     const contactRes = await fetch('https://api.sendpulse.com/crm/v1/contacts', {
       method: 'POST',
@@ -113,9 +120,10 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        firstName: contactName,
+        firstName: name,
         lastName: '',
-        phones: [ cleanPhone ]
+        phones: [ cleanPhone ],
+        attributes: attributes.length > 0 ? attributes : undefined
       })
     });
 
@@ -126,10 +134,7 @@ export default async function handler(req, res) {
       contactId = contactData.id || (contactData.data && contactData.data.id);
     } else {
       console.error('Ошибка создания контакта в CRM:', JSON.stringify(contactData));
-      // Если возникла ошибка, попробуем поискать существующий по номеру телефона
-      // Или если контакт уже есть, но API выдал ошибку дублирования.
-      // Нам нужен любой рабочий ID контакта для генерации ссылки.
-      // Попробуем продолжить, если ID все-таки вернулся в структуре ошибки, либо возвращаем ошибку.
+      // Попробуем продолжить, если ID вернулся в структуре ошибки
       contactId = contactData.id || (contactData.data && contactData.data.id);
     }
 
@@ -143,18 +148,73 @@ export default async function handler(req, res) {
 
     console.log(`Контакт успешно создан/найден. ID: ${contactId}`);
 
-    // 4. Генерация ссылки на оплату
-    const paymentPayload = {
-      contact_id: Number(contactId) || contactId,
-      payment_system_id: Number(paymentSystemId) || paymentSystemId,
-      amount: 0.99,
+    // 4. Создание сделки в CRM
+    const dealPayload = {
+      pipelineId: 177532,
+      stepId: 617504,
+      name: `Церемония Тишины - ${name}`,
+      price: 0.99,
       currency: 'EUR',
+      contact: [ Number(contactId) || contactId ]
+    };
+
+    console.log('Отправка запроса на создание сделки:', JSON.stringify(dealPayload));
+
+    const dealRes = await fetch('https://api.sendpulse.com/crm/v1/deals', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dealPayload)
+    });
+
+    const dealData = await dealRes.json();
+
+    if (!dealRes.ok) {
+      console.error('Ошибка создания сделки в CRM:', JSON.stringify(dealData));
+      return res.status(502).json({
+        success: false,
+        error: 'Не удалось создать сделку в CRM SendPulse.',
+        details: dealData
+      });
+    }
+
+    const dealId = dealData.id || (dealData.data && dealData.data.id);
+
+    if (!dealId) {
+      console.error('API SendPulse не вернул ID сделки в ответе:', JSON.stringify(dealData));
+      return res.status(502).json({
+        success: false,
+        error: 'Не получен идентификатор созданной сделки.',
+        details: dealData
+      });
+    }
+
+    console.log(`Сделка успешно создана. ID: ${dealId}`);
+
+    // 5. Генерация ссылки на оплату на основе сделки
+    const date = new Date();
+    date.setDate(date.getDate() + 3); // Ссылка действительна 3 дня
+    const untilDate = date.toISOString().split('T')[0];
+
+    const paymentPayload = {
+      paymentCategory: 2, // personalPayment
+      paymentType: paymentType,
+      paymentId: String(paymentSystemId),
+      contactId: Number(contactId),
+      pipelineId: 177532,
+      stepId: 617504,
+      dealId: Number(dealId),
+      price: 0.99,
+      currency: 'EUR',
+      untilDate: untilDate,
       description: 'Церемония Тишины'
     };
 
-    console.log('Отправка запроса на создание платежа:', JSON.stringify(paymentPayload));
+    console.log('Отправка запроса на создание платежа сделки:', JSON.stringify(paymentPayload));
 
-    const paymentRes = await fetch('https://api.sendpulse.com/crm/v1/payments/contact-generate-payment-link', {
+    const paymentRes = await fetch('https://api.sendpulse.com/crm/v1/payments/deal-generate-payment-link', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${accessToken}`,
@@ -166,7 +226,7 @@ export default async function handler(req, res) {
     const paymentData = await paymentRes.json();
 
     if (!paymentRes.ok) {
-      console.error('Ошибка генерации ссылки на оплату:', JSON.stringify(paymentData));
+      console.error('Ошибка генерации ссылки на оплату для сделки:', JSON.stringify(paymentData));
       return res.status(502).json({
         success: false,
         error: 'Не удалось сгенерировать ссылку на оплату в SendPulse.',
@@ -174,7 +234,8 @@ export default async function handler(req, res) {
       });
     }
 
-    const paymentUrl = paymentData.payment_link || 
+    const paymentUrl = (paymentData.data && paymentData.data.link) || 
+                       paymentData.payment_link || 
                        paymentData.paymentLink || 
                        (paymentData.data && (paymentData.data.payment_link || paymentData.data.paymentLink)) ||
                        (paymentData.result && paymentData.result.payment_link);
