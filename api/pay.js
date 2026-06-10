@@ -115,12 +115,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         firstName: contactName,
         lastName: '',
-        phones: [
-          {
-            phone: cleanPhone,
-            type: 'mobile'
-          }
-        ]
+        phones: [ cleanPhone ]
       })
     });
 
