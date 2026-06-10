@@ -32,8 +32,8 @@ export default async function handler(req, res) {
     const tokenData = await tokenRes.json();
     const accessToken = tokenData.access_token;
 
-    // 2. Fetch payment systems
-    const methodsRes = await fetch('https://api.sendpulse.com/crm/v1/payments/user-payment-methods', {
+    // 2. Fetch pipelines
+    const methodsRes = await fetch('https://api.sendpulse.com/crm/v1/pipelines', {
       headers: {
         'Authorization': `Bearer ${accessToken}`
       }
