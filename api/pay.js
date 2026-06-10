@@ -73,10 +73,10 @@ export default async function handler(req, res) {
         console.log('Доступные методы оплаты:', JSON.stringify(methodsData));
         const list = Array.isArray(methodsData) ? methodsData : (methodsData.result || methodsData.data || []);
         
-        // Находим первый активный метод оплаты
-        const activeMethod = list.find(m => m.status === 1 || m.active === true || m.status === 'active') || list[0];
+        // Находим первый активный метод оплаты (статус 1 или 2 означает активный)
+        const activeMethod = list.find(m => m.status === 1 || m.status === 2 || m.active === true || m.status === 'active') || list[0];
         if (activeMethod) {
-          paymentSystemId = activeMethod.id;
+          paymentSystemId = activeMethod.paymentId || activeMethod.id;
           console.log(`Автоматически выбран платежный метод: ${activeMethod.name || paymentSystemId} (ID: ${paymentSystemId})`);
         }
       }
