@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Церемония Тишины · Юрий Кручин</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a0a; --bg-elev:#131110; --bg-card:#16130f;
+    --cream:#d8c9af; --cream-bright:#ece0c5; --cream-mute:#8a8074;
+    --white:#fff; --gold:#c8a96a; --gold-bright:#dabd80;
+    --line:rgba(255,255,255,0.07); --line-strong:rgba(255,255,255,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--cream);font-family:'Inter',-apple-system,system-ui,sans-serif;font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  .container{max-width:1280px;margin:0 auto;padding:0 40px;}
+  .container-narrow{max-width:920px;margin:0 auto;padding:0 40px;}
+  .section{padding:104px 0;}
+  .italic{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);}
+
+  .cta{display:inline-flex;align-items:center;gap:18px;background:linear-gradient(180deg,#e8c585 0%,#c69b5e 100%);color:#1a1410;padding:22px 44px 22px 40px;border:none;border-radius:100px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .4s ease;box-shadow:0 12px 30px rgba(200,169,106,0.18);}
+  .cta:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(200,169,106,0.30);}
+  .cta-arrow{width:36px;height:36px;border-radius:50%;background:#1a1410;color:#e8c585;display:inline-flex;align-items:center;justify-content:center;font-size:16px;transition:transform .3s;}
+  .cta:hover .cta-arrow{transform:translateX(3px);}
+
+  /* блок цены + таймер + CTA (повторяемый) */
+  .offer-block{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:50px;}
+  .price-pill{display:inline-flex;align-items:baseline;gap:12px;color:var(--cream-bright);font-size:15px;letter-spacing:0.04em;}
+  .price-pill b{font-size:30px;color:var(--gold-bright);font-weight:600;}
+  .price-note{color:var(--cream-mute);font-size:13px;}
+  .timer-block{margin-top:6px;text-align:center;color:var(--cream-mute);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;}
+  .timer{font-family:'Inter',sans-serif;font-size:30px;font-weight:600;letter-spacing:0.1em;color:var(--gold-bright);margin-top:8px;text-transform:none;}
+  .offer-block{align-items:center;text-align:center;}
+  .offer-card{max-width:500px;margin:50px auto 0;background:var(--bg-card);border:1px solid var(--line-strong);border-radius:16px;padding:26px 28px;text-align:center;display:flex;flex-direction:column;gap:16px;align-items:center;}
+  .offer-card .cta{width:100%;justify-content:center;}
+  .offer-card .timer-block{margin-top:0;}
+  .hero .offer-card{max-width:540px;width:100%;margin:12px 0 0;}
+  .after-box{border-top:1px solid var(--line);padding-top:16px;width:100%;}
+  .after-title{color:var(--gold-bright);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;}
+  .after-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;text-align:left;}
+  .after-box li{display:flex;gap:10px;color:var(--cream);font-size:14px;line-height:1.4;}
+  .after-box li::before{content:'✦';color:var(--gold);flex-shrink:0;}
+
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 100px;position:relative;overflow:hidden;background-image:url('hero-image.jpg');background-size:cover;background-position:center;}
+  .hero-photo-mobile{display:none;}
+  .yura-intro{text-align:center;}
+  .yi-photo{max-width:340px;margin:0 auto 24px;border-radius:18px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 76%,transparent);mask-image:linear-gradient(180deg,#000 76%,transparent);}
+  .yi-photo img{width:100%;display:block;}
+  .yi-name{font-family:'Inter',sans-serif;font-size:clamp(28px,3.6vw,44px);font-weight:500;color:var(--white);letter-spacing:-0.02em;}
+  .yi-role{display:inline-block;margin-top:18px;padding:9px 26px;border:1px solid rgba(200,169,106,0.35);border-radius:100px;background:rgba(200,169,106,0.07);font-family:'Playfair Display',serif;font-style:italic;color:var(--gold-bright);font-size:clamp(14px,1.6vw,17px);line-height:1.3;}
+  .hero::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,4,3,1) 0%,rgba(5,4,3,0.96) 38%,rgba(5,4,3,0.6) 58%,rgba(5,4,3,0.1) 85%,rgba(5,4,3,0) 100%);}
+  .hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,4,3,0.4) 0%,transparent 18%,transparent 78%,rgba(10,10,10,1) 100%);}
+  .hero > .container{position:relative;z-index:2;width:100%;padding-left:5vw;}
+  .hero-grid{max-width:640px;}
+  .hero-badge{display:inline-flex;align-items:center;color:var(--gold);font-size:12px;letter-spacing:0.24em;text-transform:uppercase;margin-bottom:30px;}
+  .hero-title{font-family:'Inter',sans-serif;font-weight:500;color:var(--white);font-size:clamp(56px,8vw,108px);line-height:1.0;letter-spacing:-0.025em;margin-bottom:24px;}
+  .hero-offer{font-size:clamp(19px,2.1vw,26px);line-height:1.4;color:var(--cream);margin-bottom:14px;font-weight:300;max-width:600px;}
+  .hero-suboffer{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold-bright);font-size:clamp(16px,1.6vw,19px);margin-bottom:34px;max-width:540px;}
+  .hero-cta-row{display:flex;align-items:center;gap:26px;flex-wrap:wrap;}
+  .hero-price{color:var(--cream);font-size:14px;line-height:1.5;text-align:center;}
+  .hero-price b{color:var(--gold-bright);font-size:30px;}
+  .hero-price .old{color:var(--cream-mute);text-decoration:line-through;font-size:21px;margin-right:8px;}
+  .hero-price .disc{display:block;color:var(--cream-mute);font-size:12px;letter-spacing:0.03em;}
+  .hero-sub{font-size:clamp(17px,1.8vw,21px);line-height:1.45;color:var(--cream);margin-bottom:24px;max-width:560px;}
+  .hero-results{margin-bottom:32px;}
+  .hero-results .hr-title{color:var(--gold-bright);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;}
+  .hero-results ul{list-style:none;display:flex;flex-direction:column;gap:10px;max-width:540px;}
+  .hero-results li{display:flex;gap:12px;color:var(--cream);font-size:clamp(15px,1.5vw,17px);line-height:1.45;}
+  .hero-results li::before{content:'✦';color:var(--gold);flex-shrink:0;}
+  .price-pill .old{color:var(--cream-mute);text-decoration:line-through;font-size:21px;}
+  .gifts-label{text-align:center;font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:18px;margin-bottom:22px;}
+  .gifts-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;max-width:860px;margin:0 auto;}
+  .gifts-row span{background:var(--bg-card);border:1px solid var(--line);border-radius:100px;padding:13px 26px;color:var(--cream);font-size:15px;}
+  .hero-timer{margin-top:24px;color:var(--cream-mute);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;text-align:center;}
+  .hero-timer .timer{font-size:28px;}
+
+  .eyebrow{text-align:center;font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:clamp(19px,2vw,26px);margin-bottom:18px;}
+  .h2-center{text-align:center;font-family:'Inter',sans-serif;font-size:clamp(34px,4.6vw,60px);font-weight:500;color:var(--white);letter-spacing:-0.025em;line-height:1.08;margin-bottom:26px;}
+  .center-lead{text-align:center;font-size:clamp(16px,1.6vw,19px);color:var(--cream);max-width:720px;margin:0 auto 50px;line-height:1.65;}
+
+  .ifyou-grid{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:16px;}
+  .ifyou-item{display:flex;gap:18px;align-items:flex-start;background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:22px 26px;color:var(--cream);font-size:16px;line-height:1.55;}
+  .ifyou-mark{color:var(--gold);flex-shrink:0;font-family:'Playfair Display',serif;font-style:italic;font-size:20px;}
+  .seg-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .seg-card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:32px 30px;}
+  .seg-title{color:var(--cream-bright);font-size:17px;font-weight:600;letter-spacing:0.03em;margin-bottom:6px;text-transform:uppercase;}
+  .seg-sub{color:var(--gold);font-family:'Playfair Display',serif;font-style:italic;font-size:16px;margin-bottom:18px;line-height:1.3;}
+  .seg-card ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .seg-card li{display:flex;gap:12px;color:var(--cream);font-size:15px;line-height:1.5;}
+  .seg-card li::before{content:'·';color:var(--gold);font-weight:700;flex-shrink:0;}
+  .aud-list{max-width:840px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .aud-item{display:flex;gap:24px;align-items:center;background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:22px 30px;transition:border-color .3s;}
+  .aud-item:hover{border-color:rgba(200,169,106,0.4);}
+  .aud-num{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:24px;flex-shrink:0;min-width:34px;}
+  .aud-txt{color:var(--cream);font-size:clamp(15px,1.6vw,17px);line-height:1.45;}
+
+  .inside-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:900px;margin:0 auto;}
+  .inside-card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:30px 28px;}
+  .inside-num{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:22px;margin-bottom:12px;}
+  .inside-card h4{color:var(--cream-bright);font-size:19px;font-weight:500;margin-bottom:10px;}
+  .inside-card p{color:var(--cream-mute);font-size:15px;line-height:1.55;}
+  .result-box{max-width:760px;margin:44px auto 0;background:var(--bg);border:1px solid var(--line-strong);border-radius:14px;padding:34px 36px;}
+  .result-box h4{color:var(--gold-bright);font-size:15px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:18px;}
+  .result-box ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
+  .result-box li{display:flex;gap:14px;color:var(--cream);font-size:16px;line-height:1.5;}
+  .result-box li::before{content:'✦';color:var(--gold);flex-shrink:0;}
+
+  .steps{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:22px;}
+  .step{display:flex;gap:22px;align-items:flex-start;}
+  .step-n{flex-shrink:0;width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;font-family:'Playfair Display',serif;font-style:italic;}
+  .step-body h4{color:var(--cream-bright);font-size:18px;font-weight:500;margin-bottom:6px;}
+  .step-body p{color:var(--cream-mute);font-size:15px;line-height:1.55;}
+
+  .gifts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1000px;margin:0 auto;}
+  .gift-card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:30px 26px;text-align:center;}
+  .gift-card .ic{color:var(--gold);font-size:26px;margin-bottom:14px;}
+  .gift-card h4{color:var(--cream-bright);font-size:17px;font-weight:500;margin-bottom:8px;}
+  .gift-card p{color:var(--cream-mute);font-size:14px;line-height:1.5;}
+
+  .yura{background:var(--bg-elev);}
+  .yura-grid{display:grid;grid-template-columns:280px 1fr;gap:50px;align-items:center;max-width:1000px;margin:0 auto;}
+  .yura-photo{width:280px;aspect-ratio:1/1;border-radius:18px;overflow:hidden;border:1px solid var(--line);}
+  .yura-photo img{width:100%;height:100%;object-fit:cover;object-position:center 26%;}
+  .yura-eyebrow{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:22px;margin-bottom:12px;}
+  .yura-name{font-family:'Inter',sans-serif;font-size:clamp(34px,4vw,52px);font-weight:500;color:var(--white);letter-spacing:-0.02em;margin-bottom:24px;}
+  .yura-reg{list-style:none;display:flex;flex-direction:column;gap:14px;}
+  .yura-reg li{display:flex;gap:14px;color:var(--cream);font-size:16px;line-height:1.5;}
+  .yura-reg li::before{content:'✦';color:var(--gold);flex-shrink:0;}
+  .yura-quote{margin-top:28px;font-family:'Playfair Display',serif;font-style:italic;color:var(--cream-bright);font-size:20px;}
+
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1000px;margin:0 auto;}
+  .review-card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:30px 26px;}
+  .review-card p{color:var(--cream);font-size:15px;line-height:1.6;font-style:italic;}
+  .review-ph{color:var(--cream-mute);font-size:13px;margin-top:14px;font-style:normal;}
+  .marquee{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);}
+  .marquee-track{display:flex;gap:20px;width:max-content;animation:scroll 55s linear infinite;}
+  .marquee:hover .marquee-track{animation-play-state:paused;}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .rev{flex:0 0 auto;width:240px;}
+  .rev img{width:100%;display:block;border:1px solid var(--line);border-radius:12px;}
+  .pullquotes{max-width:1000px;margin:0 auto 54px;display:flex;flex-direction:column;gap:26px;}
+  .pq{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold-bright);font-size:clamp(21px,2.8vw,33px);line-height:1.3;text-align:center;}
+  @media (max-width:860px){ .rev{width:180px;} }
+
+  .climax{text-align:center;background:var(--bg-elev);}
+  .climax h2{font-family:'Inter',sans-serif;font-size:clamp(30px,4vw,52px);font-weight:500;color:var(--white);line-height:1.15;letter-spacing:-0.02em;max-width:860px;margin:0 auto 24px;}
+  .climax p{color:var(--cream);font-size:clamp(16px,1.6vw,19px);max-width:640px;margin:0 auto 36px;line-height:1.65;}
+  .climax .italic-line{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold-bright);font-size:clamp(20px,2.2vw,30px);margin:0 auto 8px;max-width:720px;}
+
+  footer{padding:46px 0;border-top:1px solid var(--line);text-align:center;color:var(--cream-mute);font-size:13px;letter-spacing:0.04em;}
+  .footer-links{margin-bottom:16px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;}
+  .footer-links a{color:var(--cream-mute);text-decoration:underline;cursor:pointer;font-size:13px;}
+  .footer-links a:hover{color:var(--gold);}
+
+  /* MODAL */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.78);z-index:100;align-items:center;justify-content:center;padding:20px;}
+  .modal-overlay.active{display:flex;}
+  .modal-card{background:var(--bg-card);border:1px solid var(--line-strong);border-radius:18px;padding:42px 38px;max-width:460px;width:100%;position:relative;max-height:90vh;overflow:auto;}
+  .modal-close{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line-strong);background:transparent;color:var(--cream);font-size:18px;cursor:pointer;}
+  .modal-close:hover{color:var(--gold);border-color:var(--gold);}
+  .modal-eyebrow{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:16px;margin-bottom:8px;}
+  .modal-title{font-size:26px;font-weight:500;color:var(--white);margin-bottom:18px;line-height:1.15;}
+  .pay-form{display:flex;flex-direction:column;gap:14px;}
+  .pay-form label{display:block;color:var(--cream);font-size:13px;margin-bottom:6px;}
+  .pay-form input{width:100%;padding:14px 16px;background:rgba(255,255,255,0.04);border:1px solid var(--line-strong);border-radius:8px;color:var(--cream-bright);font-family:'Inter',sans-serif;font-size:15px;}
+  .pay-form input:focus{outline:none;border-color:var(--gold);}
+  .pay-form input::placeholder{color:var(--cream-mute);}
+  .pay-submit{margin-top:8px;background:linear-gradient(180deg,#e8c585 0%,#c69b5e 100%);color:#1a1410;border:none;padding:18px;border-radius:100px;font-size:14px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;}
+  .legal-card{max-width:720px;text-align:left;}
+  .legal-card h2{font-size:24px;color:var(--white);margin-bottom:18px;font-weight:500;}
+  .legal-card p{color:var(--cream-mute);font-size:14px;line-height:1.7;margin-bottom:12px;}
+  .hidden{position:absolute;left:-9999px;}
+
+  @media (max-width:860px){
+    .section{padding:72px 0;}
+    .container,.container-narrow{padding:0 22px;}
+    .hero{background-image:url('hero-image-mobile.jpg');background-position:center;min-height:auto;align-items:flex-end;padding:150px 0 56px;}
+    .hero::before{background:linear-gradient(180deg,rgba(5,4,3,0.5) 0%,rgba(5,4,3,0.72) 42%,rgba(5,4,3,0.96) 100%);}
+    .hero::after{display:none;}
+    .hero > .container{padding-left:22px;padding-right:22px;}
+    .hero-grid{max-width:none;}
+    .inside-grid,.gifts-grid,.reviews-grid,.seg-grid{grid-template-columns:1fr;}
+    .yura-grid{grid-template-columns:1fr;gap:26px;text-align:center;}
+    .yura-photo{width:220px;margin:0 auto;}
+    .yura-reg li{justify-content:flex-start;text-align:left;}
+    .hero-cta-row{flex-direction:column;align-items:center;gap:18px;text-align:center;}
+    .hero-price{width:100%;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-badge">Онлайн-практика · 1,5 часа</div>
+        <h1 class="hero-title">Церемония<br>Тишины</h1>
+        <div class="hero-results">
+          <div class="hr-title">За 1,5 часа ты:</div>
+          <ul>
+            <li>выйдешь из шума и впервые за долгое время останешься в тишине внутри;</li>
+            <li>услышишь свой настоящий голос, без масок и чужих ролей;</li>
+            <li>встретишься со своей душой и услышишь, чего она хочет;</li>
+            <li>поймёшь, как двигаться дальше из своих настоящих желаний, без стресса, из тишины.</li>
+          </ul>
+        </div>
+        <div class="offer-card">
+          <div class="price-pill"><span class="old">€9</span><b>€0.99</b><span>меньше свечки в храме</span></div>
+          <a href="#" class="cta" onclick="openModal();return false;">Пройти церемонию <span class="cta-arrow">&#8594;</span></a>
+          <div class="timer-block">импульс это уже язык твоей души, не откладывай<div class="timer">15 : 00</div></div>
+          <div class="after-box">
+            <div class="after-title">Что получишь после оплаты</div>
+            <ul>
+              <li>короткое вводное и церемонию на 1,5 часа, доступ сразу;</li>
+              <li>3 дара: урок «Свой алтарь», Отче наш с арамейского, вход в живое поле.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ФОТО ЮРЫ (после первого экрана, как у Вики) -->
+  <section class="section yura-intro" style="padding:72px 0 24px;">
+    <div class="container">
+      <div class="yi-photo"><img src="yura-real.jpg" alt="Юрий Кручин"></div>
+      <div class="yi-name">Юрий Кручин</div>
+      <div class="yi-role">проводник · инвестор · 20 лет духовного пути</div>
+    </div>
+  </section>
+
+  <!-- ДЛЯ ТЕБЯ ЕСЛИ -->
+  <section class="section" style="padding-top:48px;">
+    <div class="container">
+      <div class="eyebrow">для кого эта церемония</div>
+      <h2 class="h2-center">Это для тебя, если</h2>
+      <div class="aud-list">
+        <div class="aud-item"><span class="aud-num">01</span><span class="aud-txt">то, что раньше вдохновляло и радовало, теперь идёт на автомате и истощает</span></div>
+        <div class="aud-item"><span class="aud-num">02</span><span class="aud-txt">ты прошёл десятки практик и курсов, но в жизни всё повторяется по тому же сценарию</span></div>
+        <div class="aud-item"><span class="aud-num">03</span><span class="aud-txt">ты живёшь из ума, и в голове постоянный шум, который не выключить</span></div>
+        <div class="aud-item"><span class="aud-num">04</span><span class="aud-txt">ты носишь маски и больше не помнишь, кто ты без них</span></div>
+        <div class="aud-item"><span class="aud-num">05</span><span class="aud-txt">ты устал подстраиваться и спасать всех, и сам уже не понимаешь, чего хочешь</span></div>
+        <div class="aud-item"><span class="aud-num">06</span><span class="aud-txt">ты хочешь начать реализовывать желания души, потому что очередные цели из головы уже не вдохновляют</span></div>
+        <div class="aud-item"><span class="aud-num">07</span><span class="aud-txt">ты ищешь следующий уровень глубины, потому что внутри есть ощущение, что можешь больше</span></div>
+      </div>
+      <div class="offer-card">
+        <div class="price-pill"><span class="old">€9</span><b>€0.99</b><span>меньше свечки в храме</span></div>
+        <a href="#" class="cta" onclick="openModal();return false;">Пройти церемонию <span class="cta-arrow">&#8594;</span></a>
+        <div class="timer-block">импульс это уже язык твоей души, не откладывай<div class="timer">15 : 00</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЧТО ВНУТРИ -->
+  <section class="section" style="background:var(--bg-elev)">
+    <div class="container">
+      <div class="eyebrow">что ты проживёшь</div>
+      <h2 class="h2-center">1,5 часа живой практики</h2>
+      <p class="center-lead">Это запись настоящего живого эфира, где вместе со мной дышали 70 человек. Ты заходишь в это поле и проживаешь церемонию своим телом, дома, в своём пространстве.</p>
+      <div class="inside-grid">
+        <div class="inside-card"><div class="inside-num">01</div><h4>Дыхание с задержками</h4><p>Дыхательная практика, после которой внутри становится тихо, и в этой тишине ты слышишь сам себя.</p></div>
+        <div class="inside-card"><div class="inside-num">02</div><h4>Микрокосмическая орбита</h4><p>Вниманием поднимаем энергию по телу, связь с сердцем и с макушкой, возвращение в присутствие.</p></div>
+        <div class="inside-card"><div class="inside-num">03</div><h4>Встреча с душой и родом</h4><p>Тихий разговор со своей душой и работа с родовой системой, прощение и благодарность.</p></div>
+        <div class="inside-card"><div class="inside-num">04</div><h4>Отче наш с арамейского</h4><p>Молитва в переводе с того языка, на котором говорил Иисус. Глубокое завершение церемонии.</p></div>
+      </div>
+      <div class="result-box">
+        <h4>После церемонии ты:</h4>
+        <ul>
+          <li>вышел из шума и впервые за долгое время остался в тишине внутри;</li>
+          <li>услышал свой настоящий голос, без масок и чужих ролей;</li>
+          <li>встретился со своей душой и услышал, чего она хочет;</li>
+          <li>понял, как двигаться дальше из своих настоящих желаний, без стресса, из тишины.</li>
+        </ul>
+      </div>
+      <div class="offer-card">
+        <div class="price-pill"><span class="old">€9</span><b>€0.99</b><span>меньше свечки в храме</span></div>
+        <a href="#" class="cta" onclick="openModal();return false;">Пройти церемонию <span class="cta-arrow">&#8594;</span></a>
+        <div class="timer-block">импульс это уже язык твоей души, не откладывай<div class="timer">15 : 00</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- КАК ПРОХОДИТ -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">как это проходит</div>
+      <h2 class="h2-center">Большая онлайн-практика всего за €0.99</h2>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><div class="step-body"><h4>Заходишь по символической цене</h4><p>€0.99, меньше одной свечки в храме по миру. Это не про деньги, а про твоё намерение прийти к себе.</p></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-body"><h4>Сначала короткое вводное</h4><p>Десять минут, в которых я настраиваю тебя и рассказываю, чем жизнь из тишины отличается от жизни из хаоса.</p></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-body"><h4>Потом сама церемония, 1,5 часа</h4><p>Проходишь дома, как встречу с собой. Сядь удобно, дыши вместе со мной от начала до конца.</p></div></div>
+      </div>
+      <div class="offer-card">
+        <div class="price-pill"><span class="old">€9</span><b>€0.99</b><span>меньше свечки в храме</span></div>
+        <a href="#" class="cta" onclick="openModal();return false;">Пройти церемонию <span class="cta-arrow">&#8594;</span></a>
+        <div class="timer-block">импульс это уже язык твоей души, не откладывай<div class="timer">15 : 00</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЮРА -->
+  <section class="section yura">
+    <div class="container">
+      <div class="yura-grid">
+        <div class="yura-photo"><img src="yura-photo.jpg" alt="Юрий Кручин"></div>
+        <div>
+          <div class="yura-eyebrow">твой проводник</div>
+          <div class="yura-name">Юрий Кручин</div>
+          <ul class="yura-reg">
+            <li>20 лет духовного пути. С 2025 года отказался от позиции учителя и проводит публичную трансформацию.</li>
+            <li>1500 дней практики гвоздестояния подряд, более 1000 человек проведено через церемонии.</li>
+            <li>7-дневный тёмный ретрит в одиночестве, тибетская традиция Бон.</li>
+            <li>В 2026 году снимает фильм про тишину через дыхание для Каннского фестиваля.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ОТЗЫВЫ -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">голоса из поля</div>
+      <h2 class="h2-center">Что говорят те, кто уже дышал</h2>
+    </div>
+    <div class="pullquotes">
+        <div class="pq">«Сегодня я чувствовала как никогда Бога в себе»</div>
+        <div class="pq">«Нет прошлого и будущего, только момент сейчас»</div>
+        <div class="pq">«Я не хорошая девочка, я живая со всем спектром эмоций»</div>
+        <div class="pq">«Было глубоко, а сейчас тихо»</div>
+    </div>
+    <!-- ОТЗЫВЫ: реальные скрины, лента сама прокручивается (набор продублирован для бесшовности) -->
+    <div class="marquee">
+      <div class="marquee-track">
+        <div class="rev"><img src="reviews/img_1063.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1064.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1065.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1066.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1067.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1068.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1069.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1070.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1071.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1072.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1073.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1074.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1075.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1076.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1077.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1078.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1079.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1080.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1081.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1082.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1083.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1084.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1085.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1086.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1063.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1064.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1065.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1066.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1067.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1068.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1069.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1070.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1071.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1072.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1073.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1074.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1075.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1076.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1077.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1078.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1079.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1080.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1081.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1082.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1083.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1084.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1085.jpg" alt="отзыв" loading="lazy"></div>
+        <div class="rev"><img src="reviews/img_1086.jpg" alt="отзыв" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- КЛИМАКС + ОПЛАТА -->
+  <section class="section climax" id="oplata">
+    <div class="container">
+      <h2>Самое богатое место на земле это кладбище нереализованных мечт</h2>
+      <p>Люди годами носят в себе то, что так и не сделали из страха. Я не хочу прожить эту жизнь не настоящей. И хочу, чтобы ты прожил хотя бы один глоток тишины, из которой всё начинается.</p>
+      <div class="italic-line">Мечты сбываются, когда мы в тишине.</div>
+      <div class="offer-card">
+        <div class="price-pill"><span class="old">€9</span><b>€0.99</b><span>меньше свечки в храме</span></div>
+        <a href="#" class="cta" onclick="openModal();return false;">Пройти церемонию <span class="cta-arrow">&#8594;</span></a>
+        <div class="timer-block">импульс это уже язык твоей души, не откладывай<div class="timer">15 : 00</div></div>
+        <div class="price-note">После оплаты ты сразу попадаешь в церемонию.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a onclick="openLegal('privacy')">Политика конфиденциальности</a>
+      <a onclick="openLegal('offer')">Договор публичной оферты</a>
+    </div>
+    Церемония Тишины · Путь Тишины · Юрий Кручин и команда
+  </footer>
+
+  <!-- MODAL: оплата -->
+  <div class="modal-overlay" id="payModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()" aria-label="Закрыть">&times;</button>
+      <div class="modal-eyebrow">шаг до тишины</div>
+      <h3 class="modal-title">Оставь свои данные</h3>
+      <form class="pay-form" id="buyForm">
+        <div><label for="m-name">Имя</label><input type="text" id="m-name" name="name" placeholder="Как тебя зовут" required></div>
+        <div><label for="m-phone">Телефон</label><input type="tel" id="m-phone" name="phone" placeholder="+380 99 123 45 67" required></div>
+        <div><label for="m-tg">Telegram-ник</label><input type="text" id="m-tg" name="telegram" placeholder="@your_nickname" required></div>
+        <button type="submit" class="pay-submit">Перейти к оплате · €0.99</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: legal -->
+  <div class="modal-overlay" id="legalModal">
+    <div class="modal-card legal-card">
+      <button class="modal-close" onclick="closeLegal()" aria-label="Закрыть">&times;</button>
+      <div id="legal-privacy" style="display:none">
+        <h2>Политика конфиденциальности</h2>
+        <p>[Вставить текст политики конфиденциальности и реквизиты ФОП/компании.]</p>
+      </div>
+      <div id="legal-offer" style="display:none">
+        <h2>Договор публичной оферты</h2>
+        <p>[Вставить текст договора публичной оферты и реквизиты.]</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // TIMER — мягкий «импульс сейчас», 15 минут, свой для каждого посетителя
+  (function(){
+    var KEY='ceremony_impulse_timer';
+    var end=localStorage.getItem(KEY);
+    if(!end){ end=Date.now()+15*60*1000; localStorage.setItem(KEY,end); }
+    end=parseInt(end);
+    function upd(){
+      var diff=end-Date.now();
+      if(diff<=0){ document.querySelectorAll('.timer').forEach(function(t){t.textContent='00 : 00';}); return; }
+      var m=String(Math.floor(diff/60000)).padStart(2,'0');
+      var s=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+      document.querySelectorAll('.timer').forEach(function(t){t.textContent=m+' : '+s;});
+    }
+    upd(); setInterval(upd,1000);
+  })();
+
+  // MODAL оплаты
+  function openModal(){ document.getElementById('payModal').classList.add('active'); document.body.style.overflow='hidden'; }
+  function closeModal(){ document.getElementById('payModal').classList.remove('active'); document.body.style.overflow=''; }
+  document.getElementById('payModal').addEventListener('click',function(e){ if(e.target===this) closeModal(); });
+
+  // MODAL legal
+  function openLegal(which){
+    document.getElementById('legal-privacy').style.display = which==='privacy'?'block':'none';
+    document.getElementById('legal-offer').style.display = which==='offer'?'block':'none';
+    document.getElementById('legalModal').classList.add('active'); document.body.style.overflow='hidden';
+  }
+  function closeLegal(){ document.getElementById('legalModal').classList.remove('active'); document.body.style.overflow=''; }
+  document.getElementById('legalModal').addEventListener('click',function(e){ if(e.target===this) closeLegal(); });
+
+  // TODO: SendPulse CRM — отправка лида и редирект на оплату
+  // 1. Получить access_token: POST https://api.sendpulse.com/oauth/access_token
+  // 2. Создать контакт: POST https://api.sendpulse.com/crm/v1/contacts
+  // 3. Редирект: window.location.href = 'ССЫЛКА_НА_ОПЛАТУ';
+  document.getElementById('buyForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    // developer: добавь сюда SendPulse API логику
+    // window.location.href = 'ССЫЛКА_НА_ОПЛАТУ';
+  });
+</script>
+
+</body>
+</html>
