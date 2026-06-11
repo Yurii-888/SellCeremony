@@ -14,7 +14,13 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, phone, telegram, utm } = req.body;
+    // Безопасное приведение к строке и очистка пробелов по краям
+    const name = typeof req.body.name === 'string' ? req.body.name.trim() : '';
+    const phone = typeof req.body.phone === 'string' 
+      ? req.body.phone.trim() 
+      : (req.body.phone !== undefined && req.body.phone !== null ? String(req.body.phone).trim() : '');
+    const telegram = typeof req.body.telegram === 'string' ? req.body.telegram.trim() : '';
+    const utm = req.body.utm;
 
     // Валидация входных данных
     if (!name || !phone || !telegram) {
@@ -59,7 +65,7 @@ export default async function handler(req, res) {
 
     // 2. Определение ID и типа платежной системы
     let paymentSystemId = process.env.SENDPULSE_PAYMENT_SYSTEM_ID;
-    let paymentType = '';
+    let paymentType = 'Wayforpay'; // дефолтное значение для отказоустойчивости
 
     console.log('Запрашиваем методы оплаты через API...');
     const methodsRes = await fetch('https://api.sendpulse.com/crm/v1/payments/user-payment-methods', {
@@ -149,9 +155,12 @@ export default async function handler(req, res) {
     console.log(`Контакт успешно создан/найден. ID: ${contactId}`);
 
     // 4. Создание сделки в CRM
+    const pipelineId = process.env.SENDPULSE_PIPELINE_ID ? Number(process.env.SENDPULSE_PIPELINE_ID) : 177532;
+    const stepId = process.env.SENDPULSE_STEP_ID ? Number(process.env.SENDPULSE_STEP_ID) : 617504;
+
     const dealPayload = {
-      pipelineId: 177532,
-      stepId: 617504,
+      pipelineId: pipelineId,
+      stepId: stepId,
       name: `Церемония Тишины - ${name}`,
       price: 0.99,
       currency: 'EUR',
@@ -203,8 +212,8 @@ export default async function handler(req, res) {
       paymentType: paymentType,
       paymentId: String(paymentSystemId),
       contactId: Number(contactId),
-      pipelineId: 177532,
-      stepId: 617504,
+      pipelineId: pipelineId,
+      stepId: stepId,
       dealId: Number(dealId),
       price: 0.99,
       currency: 'EUR',
