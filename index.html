@@ -178,7 +178,7 @@
   @media (max-width:860px){
     .section{padding:72px 0;}
     .container,.container-narrow{padding:0 22px;}
-    .hero{background-image:url('hero-image-mobile.jpg');background-position:center;min-height:auto;align-items:flex-end;padding:150px 0 56px;}
+    .hero{background-image:url('hero-image-mobile.jpg');background-position:center;min-height:auto;align-items:flex-end;padding:64px 0 50px;}
     .hero::before{background:linear-gradient(180deg,rgba(5,4,3,0.5) 0%,rgba(5,4,3,0.72) 42%,rgba(5,4,3,0.96) 100%);}
     .hero::after{display:none;}
     .hero > .container{padding-left:22px;padding-right:22px;}
@@ -211,7 +211,7 @@
         </div>
         <div class="offer-card">
           <div class="price-pill"><span class="old">€9</span><b>€0.99</b><span>меньше свечки в храме</span></div>
-          <a href="#" class="cta" onclick="openModal();return false;">Пройти церемонию <span class="cta-arrow">&#8594;</span></a>
+          <button type="button" class="cta" onclick="openModal()">Пройти церемонию <span class="cta-arrow">&#8594;</span></button>
           <div class="timer-block">импульс это уже язык твоей души, не откладывай<div class="timer">15 : 00</div></div>
           <div class="after-box">
             <div class="after-title">Что получишь после оплаты</div>
@@ -250,7 +250,7 @@
       </div>
       <div class="offer-card">
         <div class="price-pill"><span class="old">€9</span><b>€0.99</b><span>меньше свечки в храме</span></div>
-        <a href="#" class="cta" onclick="openModal();return false;">Пройти церемонию <span class="cta-arrow">&#8594;</span></a>
+        <button type="button" class="cta" onclick="openModal()">Пройти церемонию <span class="cta-arrow">&#8594;</span></button>
         <div class="timer-block">импульс это уже язык твоей души, не откладывай<div class="timer">15 : 00</div></div>
       </div>
     </div>
@@ -279,7 +279,7 @@
       </div>
       <div class="offer-card">
         <div class="price-pill"><span class="old">€9</span><b>€0.99</b><span>меньше свечки в храме</span></div>
-        <a href="#" class="cta" onclick="openModal();return false;">Пройти церемонию <span class="cta-arrow">&#8594;</span></a>
+        <button type="button" class="cta" onclick="openModal()">Пройти церемонию <span class="cta-arrow">&#8594;</span></button>
         <div class="timer-block">импульс это уже язык твоей души, не откладывай<div class="timer">15 : 00</div></div>
       </div>
     </div>
@@ -297,7 +297,7 @@
       </div>
       <div class="offer-card">
         <div class="price-pill"><span class="old">€9</span><b>€0.99</b><span>меньше свечки в храме</span></div>
-        <a href="#" class="cta" onclick="openModal();return false;">Пройти церемонию <span class="cta-arrow">&#8594;</span></a>
+        <button type="button" class="cta" onclick="openModal()">Пройти церемонию <span class="cta-arrow">&#8594;</span></button>
         <div class="timer-block">импульс это уже язык твоей души, не откладывай<div class="timer">15 : 00</div></div>
       </div>
     </div>
@@ -397,7 +397,7 @@
       <div class="italic-line">Мечты сбываются, когда мы в тишине.</div>
       <div class="offer-card">
         <div class="price-pill"><span class="old">€9</span><b>€0.99</b><span>меньше свечки в храме</span></div>
-        <a href="#" class="cta" onclick="openModal();return false;">Пройти церемонию <span class="cta-arrow">&#8594;</span></a>
+        <button type="button" class="cta" onclick="openModal()">Пройти церемонию <span class="cta-arrow">&#8594;</span></button>
         <div class="timer-block">импульс это уже язык твоей души, не откладывай<div class="timer">15 : 00</div></div>
         <div class="price-note">После оплаты ты сразу попадаешь в церемонию.</div>
       </div>
@@ -422,6 +422,7 @@
         <div><label for="m-name">Имя</label><input type="text" id="m-name" name="name" placeholder="Как тебя зовут" required></div>
         <div><label for="m-phone">Телефон</label><input type="tel" id="m-phone" name="phone" placeholder="+380 99 123 45 67" required></div>
         <div><label for="m-tg">Telegram-ник</label><input type="text" id="m-tg" name="telegram" placeholder="@your_nickname" required></div>
+        <div id="form-error" style="color:#ff6b6b; font-size:13px; text-align:left; display:none; margin-bottom:12px; line-height:1.4;"></div>
         <button type="submit" class="pay-submit">Перейти к оплате · €0.99</button>
       </form>
     </div>
@@ -465,19 +466,41 @@
     var end=localStorage.getItem(KEY);
     if(!end){ end=Date.now()+15*60*1000; localStorage.setItem(KEY,end); }
     end=parseInt(end);
+    var timerInterval;
     function upd(){
       var diff=end-Date.now();
-      if(diff<=0){ document.querySelectorAll('.timer').forEach(function(t){t.textContent='00 : 00';}); return; }
+      if(diff<=0){
+        document.querySelectorAll('.timer').forEach(function(t){t.textContent='00 : 00';});
+        if(timerInterval) { clearInterval(timerInterval); }
+        return;
+      }
       var m=String(Math.floor(diff/60000)).padStart(2,'0');
       var s=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
       document.querySelectorAll('.timer').forEach(function(t){t.textContent=m+' : '+s;});
     }
-    upd(); setInterval(upd,1000);
+    upd();
+    timerInterval = setInterval(upd,1000);
   })();
 
+  // Вспомогательные функции для вывода ошибок в форме
+  function showError(msg) {
+    const errDiv = document.getElementById('form-error');
+    if (errDiv) {
+      errDiv.textContent = msg;
+      errDiv.style.display = 'block';
+    }
+  }
+  function hideError() {
+    const errDiv = document.getElementById('form-error');
+    if (errDiv) {
+      errDiv.style.display = 'none';
+      errDiv.textContent = '';
+    }
+  }
+
   // MODAL оплаты
-  function openModal(){ document.getElementById('payModal').classList.add('active'); document.body.style.overflow='hidden'; }
-  function closeModal(){ document.getElementById('payModal').classList.remove('active'); document.body.style.overflow=''; }
+  function openModal(){ hideError(); document.getElementById('payModal').classList.add('active'); document.body.style.overflow='hidden'; }
+  function closeModal(){ hideError(); document.getElementById('payModal').classList.remove('active'); document.body.style.overflow=''; }
   document.getElementById('payModal').addEventListener('click',function(e){ if(e.target===this) closeModal(); });
 
   // MODAL legal
@@ -492,6 +515,7 @@
   // SendPulse CRM — отправка лида и редирект на оплату
   document.getElementById('buyForm').addEventListener('submit', async function (e) {
     e.preventDefault();
+    hideError();
     
     const form = this;
     const submitBtn = form.querySelector('.pay-submit');
@@ -500,7 +524,40 @@
     // Получаем данные из полей
     const name = document.getElementById('m-name').value.trim();
     const phone = document.getElementById('m-phone').value.trim();
-    const telegram = document.getElementById('m-tg').value.trim();
+    let telegram = document.getElementById('m-tg').value.trim();
+    
+    // Валидация Имени
+    if (name.length < 2) {
+      showError('Пожалуйста, введите имя (не менее 2 символов).');
+      return;
+    }
+    
+    // Валидация Телефона
+    const cleanPhone = phone.replace(/\D/g, '');
+    if (cleanPhone.length < 9 || cleanPhone.length > 15) {
+      showError('Пожалуйста, введите корректный номер телефона (от 9 до 15 цифр).');
+      return;
+    }
+    
+    // Валидация и нормализация Telegram-ника
+    if (telegram) {
+      // Очистка от полных ссылок на профиль
+      if (telegram.includes('t.me/')) {
+        telegram = telegram.split('t.me/')[1].split('?')[0].split('/')[0];
+      }
+      // Предотвращение некорректных префиксов и добавление @
+      telegram = telegram.replace(/^@+/, ''); // Удаляем любые начальные @
+      telegram = '@' + telegram;
+      
+      const tgRegex = /^@[a-zA-Z0-9_]{5,32}$/;
+      if (!tgRegex.test(telegram)) {
+        showError('Telegram-ник должен содержать от 5 до 32 символов (латиница, цифры, подчёркивание).');
+        return;
+      }
+    } else {
+      showError('Пожалуйста, укажите ваш Telegram-ник.');
+      return;
+    }
     
     // Блокируем кнопку и меняем текст для индикации загрузки
     submitBtn.disabled = true;
@@ -508,14 +565,18 @@
     submitBtn.style.opacity = '0.7';
     submitBtn.style.cursor = 'not-allowed';
     
-    // Считываем сохраненные UTM-метки из sessionStorage
+    // Считываем сохраненные UTM-метки из sessionStorage с защитой от сбоев
     const utm = {};
-    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(param => {
-      const value = sessionStorage.getItem(param);
-      if (value) {
-        utm[param] = value;
-      }
-    });
+    try {
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(param => {
+        const value = sessionStorage.getItem(param);
+        if (value) {
+          utm[param] = value;
+        }
+      });
+    } catch (sessionErr) {
+      console.warn('Не удалось прочитать UTM-метки из sessionStorage:', sessionErr);
+    }
 
     try {
       const response = await fetch('/api/pay', {
@@ -526,7 +587,15 @@
         body: JSON.stringify({ name, phone, telegram, utm })
       });
       
-      const data = await response.json();
+      // Безопасное чтение JSON с проверкой Content-Type
+      let data;
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        const textError = await response.text();
+        throw new Error('Некорректный ответ сервера. Ошибка: ' + (textError.substring(0, 100) || response.statusText));
+      }
       
       if (response.ok && data.success && data.paymentUrl) {
         // Перенаправляем на платежный шлюз
@@ -536,7 +605,7 @@
       }
     } catch (err) {
       console.error('Ошибка оплаты:', err);
-      alert('Произошла ошибка при оформлении заказа: ' + err.message + '\nПожалуйста, попробуйте еще раз или обратитесь в поддержку.');
+      showError('Ошибка оформления заказа: ' + err.message + '\nПожалуйста, попробуйте еще раз.');
       
       // Возвращаем кнопку в исходное состояние
       submitBtn.disabled = false;
