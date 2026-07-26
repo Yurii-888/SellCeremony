@@ -3,7 +3,7 @@ export default async function middleware(request) {
   if (url.pathname !== '/') return;
 
   const lang = request.headers.get('accept-language') || '';
-  const target = lang.startsWith('uk') ? '/ceremonia-ua.html' : '/ceremonia.html';
+  const target = lang.startsWith('uk') ? '/index-ua.html' : '/index.html';
 
   return fetch(new URL(target, request.url));
 }
