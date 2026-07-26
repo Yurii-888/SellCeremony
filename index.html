@@ -3,11 +3,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕯️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
-</head>
-<body>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -32,6 +31,8 @@
   }
   @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms !important}}
 </style>
+</head>
+<body>
 
 <div style="position:relative;background:#050506;color:#e6e8ec;font-family:'Manrope',sans-serif;font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased">
 
@@ -76,39 +77,39 @@
       </svg>
     </div>
   </div>
-    <span style="position:absolute;top:calc(100% - 6px);left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:.42em;text-transform:uppercase;color:#9aa1ac;white-space:nowrap">Тиша · натисни</span>
+    <span data-i18n="tishaHint" style="position:absolute;top:calc(100% - 6px);left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:.42em;text-transform:uppercase;color:#9aa1ac;white-space:nowrap">Тиша · натисни</span>
 
     <!-- Tisha panel -->
   <div id="tishaModal" style="display:none;position:fixed;inset:0;background:rgba(3,3,4,.7);backdrop-filter:blur(10px);z-index:100;align-items:center;justify-content:center;padding:20px">
     <div style="background:linear-gradient(180deg,#101114,#08090a);border:1px solid rgba(226,230,235,.18);border-radius:28px;padding:38px 32px;max-width:460px;width:100%;position:relative;max-height:88vh;overflow:auto">
       <button id="tishaClose" style="position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(226,230,235,.25);background:rgba(226,230,235,.05);color:#e6e8ec;font-size:15px;cursor:pointer">✕</button>
-      <div style="font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:#848b96;margin-bottom:14px">Твій провідник у тишу</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-weight:500;text-transform:uppercase;font-size:28px;letter-spacing:.06em;margin-bottom:18px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Знайомтесь, Тиша</div>
-      <p style="font-family:'Manrope',sans-serif;font-size:14.5px;font-weight:300;line-height:1.8;color:#ccd1d8;margin-bottom:14px">Тиша — твій особистий провідник. Він поруч єщний, чує і текст, і голос, паміятає тебе і твою історію.</p>
-      <p style="font-family:'Manrope',sans-serif;font-size:14.5px;font-weight:300;line-height:1.8;color:#ccd1d8;margin-bottom:22px">Він веде тебе через твоє життя до стану тиші. До радості просто від того, що ти єсь. До цілісності всередні. До любові до себе.</p>
-      <div style="font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:#848b96;margin-bottom:12px">Що всередні</div>
+      <div data-i18n="tishaSubtitle" style="font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:#848b96;margin-bottom:14px">Твій провідник у тишу</div>
+      <div data-i18n="tishaTitle" style="font-family:'Cormorant Garamond',serif;font-weight:500;text-transform:uppercase;font-size:28px;letter-spacing:.06em;margin-bottom:18px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Знайомтесь, Тиша</div>
+      <p data-i18n="tishaP1" style="font-family:'Manrope',sans-serif;font-size:14.5px;font-weight:300;line-height:1.8;color:#ccd1d8;margin-bottom:14px">Тиша — твій особистий провідник. Він поруч єщний, чує і текст, і голос, паміятає тебе і твою історію.</p>
+      <p data-i18n="tishaP2" style="font-family:'Manrope',sans-serif;font-size:14.5px;font-weight:300;line-height:1.8;color:#ccd1d8;margin-bottom:22px">Він веде тебе через твоє життя до стану тиші. До радості просто від того, що ти єсь. До цілісності всередні. До любові до себе.</p>
+      <div data-i18n="tishaInside" style="font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:#848b96;margin-bottom:12px">Що всередні</div>
       <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:22px">
-        <div style="display:flex;gap:11px;align-items:flex-start;border:1px solid rgba(226,230,235,.1);border-radius:16px;padding:11px 15px;font-family:'Manrope',sans-serif;font-size:12.5px;line-height:1.6;color:#ccd1d8"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:6px"></span><span>Розібрати ситуацію. Разом дойдете до суті, і Тиша дає практику Юри саме під тебе</span></div>
-        <div style="display:flex;gap:11px;align-items:flex-start;border:1px solid rgba(226,230,235,.1);border-radius:16px;padding:11px 15px;font-family:'Manrope',sans-serif;font-size:12.5px;line-height:1.6;color:#ccd1d8"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:6px"></span><span>Подихати. Коротка дихальна практика просто в чаті, коли тобі це потрібно</span></div>
-        <div style="display:flex;gap:11px;align-items:flex-start;border:1px solid rgba(226,230,235,.1);border-radius:16px;padding:11px 15px;font-family:'Manrope',sans-serif;font-size:12.5px;line-height:1.6;color:#ccd1d8"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:6px"></span><span>Фокус дня. Три усвідомлені фокуси, з якими ти йдеш у свій день</span></div>
+        <div style="display:flex;gap:11px;align-items:flex-start;border:1px solid rgba(226,230,235,.1);border-radius:16px;padding:11px 15px;font-family:'Manrope',sans-serif;font-size:12.5px;line-height:1.6;color:#ccd1d8"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:6px"></span><span data-i18n="tishaFeat1">Розібрати ситуацію. Разом дойдете до суті, і Тиша дає практику Юри саме під тебе</span></div>
+        <div style="display:flex;gap:11px;align-items:flex-start;border:1px solid rgba(226,230,235,.1);border-radius:16px;padding:11px 15px;font-family:'Manrope',sans-serif;font-size:12.5px;line-height:1.6;color:#ccd1d8"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:6px"></span><span data-i18n="tishaFeat2">Подихати. Коротка дихальна практика просто в чаті, коли тобі це потрібно</span></div>
+        <div style="display:flex;gap:11px;align-items:flex-start;border:1px solid rgba(226,230,235,.1);border-radius:16px;padding:11px 15px;font-family:'Manrope',sans-serif;font-size:12.5px;line-height:1.6;color:#ccd1d8"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:6px"></span><span data-i18n="tishaFeat3">Фокус дня. Три усвідомлені фокуси, з якими ти йдеш у свій день</span></div>
       </div>
-      <p style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:300;line-height:1.75;color:#9aa1ac;margin-bottom:20px">Тиша провідник. За твоєм станом міяко дивитися і жива команда заботи.</p>
-      <a href="#oplata" id="tishaCta" style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(226,230,235,.35);border-radius:999px;padding:13px 26px;font-family:'Manrope',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#f4f6f8;font-weight:500;text-decoration:none"><span style="width:5px;height:5px;background:currentColor;border-radius:50%"></span>Записатися на церемонію</a>
+      <p data-i18n="tishaNote" style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:300;line-height:1.75;color:#9aa1ac;margin-bottom:20px">Тиша провідник. За твоєм станом міяко дивитися і жива команда заботи.</p>
+      <a href="#oplata" id="tishaCta" style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(226,230,235,.35);border-radius:999px;padding:13px 26px;font-family:'Manrope',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#f4f6f8;font-weight:500;text-decoration:none"><span style="width:5px;height:5px;background:currentColor;border-radius:50%"></span><span data-i18n="tishaCta">Записатися на церемонію</span></a>
     </div>
   </div>
 <!-- ================= HERO ================= -->
   <header style="position:relative;z-index:3;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 24px 90px">
-    <div style="font-size:10px;letter-spacing:.5em;color:#9aa1ac;text-transform:uppercase;margin-bottom:30px;opacity:0;animation:fadein 2s ease .3s forwards">Онлайн-практика · 1,5 години</div>
+    <div data-i18n="heroSubtitle" style="font-size:10px;letter-spacing:.5em;color:#9aa1ac;text-transform:uppercase;margin-bottom:30px;opacity:0;animation:fadein 2s ease .3s forwards">Онлайн-практика · 1,5 години</div>
     <h1 style="margin:0;opacity:0;animation:rise 1.8s cubic-bezier(.2,.7,.2,1) .2s forwards">
-      <span style="display:block;font-family:'Cormorant Garamond',serif;font-weight:500;text-transform:uppercase;line-height:1.02;font-size:clamp(42px,9vw,110px);letter-spacing:.12em;background:linear-gradient(176deg,#f6f8fa 0%,#c9ced6 32%,#8f97a3 63%,#5d646e 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Церемонія<br>Тиші</span>
+      <span data-i18n="heroTitle" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:500;text-transform:uppercase;line-height:1.02;font-size:clamp(42px,9vw,110px);letter-spacing:.12em;background:linear-gradient(176deg,#f6f8fa 0%,#c9ced6 32%,#8f97a3 63%,#5d646e 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Церемонія<br>Тиші</span>
     </h1>
     <div style="max-width:520px;margin:38px auto 0;opacity:0;animation:rise 1.8s cubic-bezier(.2,.7,.2,1) .6s forwards">
-      <div style="font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:#9aa1ac;margin-bottom:18px">За 1,5 години ти</div>
+      <div data-i18n="heroLead" style="font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:#9aa1ac;margin-bottom:18px">За 1,5 години ти</div>
       <div style="display:flex;flex-direction:column;gap:12px;text-align:left">
-        <div style="display:flex;gap:12px;font-size:15px;line-height:1.6;color:#ccd1d8"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:9px"></span><span>вийдеш із шуму і вперше за довгий час залишишся в тиші всередині;</span></div>
-        <div style="display:flex;gap:12px;font-size:15px;line-height:1.6;color:#ccd1d8"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:9px"></span><span>почуєш свій справжній голос, без масок і чужих ролей;</span></div>
-        <div style="display:flex;gap:12px;font-size:15px;line-height:1.6;color:#ccd1d8"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:9px"></span><span>зустрінешся зі своєю душею і почуєш, чого вона хоче;</span></div>
-        <div style="display:flex;gap:12px;font-size:15px;line-height:1.6;color:#ccd1d8"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:9px"></span><span>зрозумієш, як рухатися далі зі своїх справжніх бажань, без стресу, з тиші.</span></div>
+        <div style="display:flex;gap:12px;font-size:15px;line-height:1.6;color:#ccd1d8"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:9px"></span><span data-i18n="heroBul1">вийдеш із шуму і вперше за довгий час залишишся в тиші всередині;</span></div>
+        <div style="display:flex;gap:12px;font-size:15px;line-height:1.6;color:#ccd1d8"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:9px"></span><span data-i18n="heroBul2">почуєш свій справжній голос, без масок і чужих ролей;</span></div>
+        <div style="display:flex;gap:12px;font-size:15px;line-height:1.6;color:#ccd1d8"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:9px"></span><span data-i18n="heroBul3">зустрінешся зі своєю душею і почуєш, чого вона хоче;</span></div>
+        <div style="display:flex;gap:12px;font-size:15px;line-height:1.6;color:#ccd1d8"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:9px"></span><span data-i18n="heroBul4">зрозумієш, як рухатися далі зі своїх справжніх бажань, без стресу, з тиші.</span></div>
       </div>
     </div>
     <div class="offer-slot" style="width:min(92vw,520px);margin:40px auto 0;opacity:0;animation:rise 1.8s cubic-bezier(.2,.7,.2,1) .9s forwards"></div>
@@ -118,18 +119,18 @@
   <section style="position:relative;z-index:3;padding:clamp(70px,10vh,110px) 24px 30px;text-align:center">
     <div class="reveal" style="max-width:380px;margin:0 auto">
       <div style="border-radius:200px 200px 26px 26px;overflow:hidden;border:1px solid rgba(226,230,235,.14);-webkit-mask-image:linear-gradient(180deg,#000 78%,transparent);mask-image:linear-gradient(180deg,#000 78%,transparent)">
-        <img src="yura-photo.jpg" alt="Юрій Кручін" style="width:100%;display:block;filter:saturate(.55) contrast(1.04)">
+        <img data-i18n-attr="alt:yuraIntroAlt" src="yura-photo.jpg" alt="Юрій Кручін" style="width:100%;display:block;filter:saturate(.55) contrast(1.04)">
       </div>
-      <div style="margin-top:-8px;font-family:'Cormorant Garamond',serif;font-weight:500;text-transform:uppercase;font-size:clamp(26px,4vw,38px);letter-spacing:.14em;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Юрій Кручін</div>
-      <div style="display:inline-block;margin-top:14px;padding:9px 24px;border:1px solid rgba(226,230,235,.22);border-radius:999px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#b9bfc9">провідник · інвестор · 20 років шляху</div>
+      <div data-i18n="yuraIntroName" style="margin-top:-8px;font-family:'Cormorant Garamond',serif;font-weight:500;text-transform:uppercase;font-size:clamp(26px,4vw,38px);letter-spacing:.14em;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Юрій Кручін</div>
+      <div data-i18n="yuraIntroBadge" style="display:inline-block;margin-top:14px;padding:9px 24px;border:1px solid rgba(226,230,235,.22);border-radius:999px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#b9bfc9">провідник · інвестор · 20 років шляху</div>
     </div>
   </section>
 
   <!-- ================= ДЛЯ ТЕБЕ ЯКЩО ================= -->
   <section style="position:relative;z-index:3;padding:clamp(80px,12vh,140px) clamp(22px,5vw,60px)">
     <div class="reveal" style="max-width:820px;margin:0 auto">
-      <div style="font-size:10px;letter-spacing:.46em;text-transform:uppercase;color:#848b96;text-align:center;margin-bottom:22px">Для кого ця церемонія</div>
-      <h2 style="text-align:center;font-family:'Cormorant Garamond',serif;font-weight:400;text-transform:uppercase;font-size:clamp(28px,4.6vw,52px);letter-spacing:.08em;margin:0 0 44px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Це для тебе, якщо</h2>
+      <div data-i18n="audLabel" style="font-size:10px;letter-spacing:.46em;text-transform:uppercase;color:#848b96;text-align:center;margin-bottom:22px">Для кого ця церемонія</div>
+      <h2 data-i18n="audTitle" style="text-align:center;font-family:'Cormorant Garamond',serif;font-weight:400;text-transform:uppercase;font-size:clamp(28px,4.6vw,52px);letter-spacing:.08em;margin:0 0 44px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Це для тебе, якщо</h2>
       <div id="aud" style="display:flex;flex-direction:column;gap:12px"></div>
       <div class="offer-slot" style="width:min(92vw,520px);margin:44px auto 0"></div>
     </div>
@@ -138,12 +139,12 @@
   <!-- ================= ЩО ВСЕРЕДИНІ ================= -->
   <section style="position:relative;z-index:3;padding:clamp(80px,12vh,140px) clamp(22px,5vw,60px);background:radial-gradient(120% 80% at 50% 0%,rgba(14,15,18,.85),transparent 70%)">
     <div class="reveal" style="max-width:900px;margin:0 auto">
-      <div style="font-size:10px;letter-spacing:.46em;text-transform:uppercase;color:#848b96;text-align:center;margin-bottom:22px">Що ти проживеш</div>
-      <h2 style="text-align:center;font-family:'Cormorant Garamond',serif;font-weight:400;text-transform:uppercase;font-size:clamp(28px,4.6vw,52px);letter-spacing:.08em;margin:0 0 24px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">1,5 години живої практики</h2>
-      <p style="text-align:center;font-size:15.5px;color:#b9bfc9;max-width:640px;margin:0 auto 44px;line-height:1.75">Це запис справжнього живого ефіру, де разом зі мною дихали 70 людей. Ти заходиш у це поле і проживаєш церемонію своїм тілом, удома, у своєму просторі.</p>
+      <div data-i18n="insideLabel" style="font-size:10px;letter-spacing:.46em;text-transform:uppercase;color:#848b96;text-align:center;margin-bottom:22px">Що ти проживеш</div>
+      <h2 data-i18n="insideTitle" style="text-align:center;font-family:'Cormorant Garamond',serif;font-weight:400;text-transform:uppercase;font-size:clamp(28px,4.6vw,52px);letter-spacing:.08em;margin:0 0 24px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">1,5 години живої практики</h2>
+      <p data-i18n="insideDesc" style="text-align:center;font-size:15.5px;color:#b9bfc9;max-width:640px;margin:0 auto 44px;line-height:1.75">Це запис справжнього живого ефіру, де разом зі мною дихали 70 людей. Ти заходиш у це поле і проживаєш церемонію своїм тілом, удома, у своєму просторі.</p>
       <div class="grid2" id="inside" style="display:grid;grid-template-columns:1fr 1fr;gap:16px"></div>
       <div style="max-width:680px;margin:36px auto 0;background:rgba(13,14,17,.72);backdrop-filter:blur(8px);border:1px solid rgba(226,230,235,.16);border-radius:22px;padding:30px 32px">
-        <div style="font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:#9aa1ac;margin-bottom:16px">Після церемонії ти</div>
+        <div data-i18n="afterLabel" style="font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:#9aa1ac;margin-bottom:16px">Після церемонії ти</div>
         <div id="after" style="display:flex;flex-direction:column;gap:10px"></div>
       </div>
       <div class="offer-slot" style="width:min(92vw,520px);margin:44px auto 0"></div>
@@ -153,8 +154,8 @@
   <!-- ================= ЯК ПРОХОДИТЬ ================= -->
   <section style="position:relative;z-index:3;padding:clamp(80px,12vh,140px) clamp(22px,5vw,60px)">
     <div class="reveal" style="max-width:720px;margin:0 auto">
-      <div style="font-size:10px;letter-spacing:.46em;text-transform:uppercase;color:#848b96;text-align:center;margin-bottom:22px">Як це проходить</div>
-      <h2 style="text-align:center;font-family:'Cormorant Garamond',serif;font-weight:400;text-transform:uppercase;font-size:clamp(26px,4.2vw,46px);letter-spacing:.08em;margin:0 0 44px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Велика практика за €0.99</h2>
+      <div data-i18n="stepsLabel" style="font-size:10px;letter-spacing:.46em;text-transform:uppercase;color:#848b96;text-align:center;margin-bottom:22px">Як це проходить</div>
+      <h2 data-i18n="stepsTitle" style="text-align:center;font-family:'Cormorant Garamond',serif;font-weight:400;text-transform:uppercase;font-size:clamp(26px,4.2vw,46px);letter-spacing:.08em;margin:0 0 44px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Велика практика за €0.99</h2>
       <div id="steps" style="display:flex;flex-direction:column;gap:22px"></div>
       <div class="offer-slot" style="width:min(92vw,520px);margin:44px auto 0"></div>
     </div>
@@ -164,11 +165,11 @@
   <section style="position:relative;z-index:3;padding:clamp(80px,12vh,140px) clamp(22px,5vw,60px);background:radial-gradient(120% 80% at 50% 100%,rgba(14,15,18,.85),transparent 70%)">
     <div class="reveal twocol" style="max-width:920px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:min(6vw,60px);align-items:center">
       <div style="width:100%;max-width:280px;aspect-ratio:1/1;border-radius:24px;overflow:hidden;border:1px solid rgba(226,230,235,.14);margin:0 auto">
-        <img src="yura-real.jpg" alt="Юрій Кручін" style="width:100%;height:100%;object-fit:cover;object-position:center 26%;filter:saturate(.55) contrast(1.04)">
+        <img data-i18n-attr="alt:yuraAlt" src="yura-real.jpg" alt="Юрій Кручін" style="width:100%;height:100%;object-fit:cover;object-position:center 26%;filter:saturate(.55) contrast(1.04)">
       </div>
       <div>
-        <div style="font-size:10px;letter-spacing:.46em;text-transform:uppercase;color:#848b96;margin-bottom:18px">Твій провідник</div>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;text-transform:uppercase;font-size:clamp(28px,4.4vw,48px);letter-spacing:.08em;margin:0 0 24px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Юрій Кручін</h2>
+        <div data-i18n="yuraLabel" style="font-size:10px;letter-spacing:.46em;text-transform:uppercase;color:#848b96;margin-bottom:18px">Твій провідник</div>
+        <h2 data-i18n="yuraName" style="font-family:'Cormorant Garamond',serif;font-weight:400;text-transform:uppercase;font-size:clamp(28px,4.4vw,48px);letter-spacing:.08em;margin:0 0 24px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Юрій Кручін</h2>
         <div id="yura-list" style="display:flex;flex-direction:column;gap:12px"></div>
       </div>
     </div>
@@ -177,12 +178,12 @@
   <!-- ================= ВІДГУКИ ================= -->
   <section style="position:relative;z-index:3;padding:clamp(80px,12vh,140px) 0">
     <div class="reveal" style="max-width:920px;margin:0 auto;padding:0 clamp(22px,5vw,60px)">
-      <div style="font-size:10px;letter-spacing:.46em;text-transform:uppercase;color:#848b96;text-align:center;margin-bottom:22px">Голоси з поля</div>
-      <h2 style="text-align:center;font-family:'Cormorant Garamond',serif;font-weight:400;text-transform:uppercase;font-size:clamp(26px,4.2vw,46px);letter-spacing:.08em;margin:0 0 44px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Що кажуть ті, хто вже дихав</h2>
-      <div style="display:flex;flex-direction:column;gap:22px;margin-bottom:48px">
-        <div style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,2.6vw,28px);line-height:1.4;color:#eceff3">«Сьогодні я відчувала як ніколи Бога в собі»</div>
-        <div style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,2.6vw,28px);line-height:1.4;color:#b9bfc9">«Немає минулого і майбутнього, тільки момент зараз»</div>
-        <div style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,2.6vw,28px);line-height:1.4;color:#9aa1ac">«Було глибоко, а зараз тихо»</div>
+      <div data-i18n="reviewsLabel" style="font-size:10px;letter-spacing:.46em;text-transform:uppercase;color:#848b96;text-align:center;margin-bottom:22px">Голоси з поля</div>
+      <h2 data-i18n="reviewsTitle" style="text-align:center;font-family:'Cormorant Garamond',serif;font-weight:400;text-transform:uppercase;font-size:clamp(26px,4.2vw,46px);letter-spacing:.08em;margin:0 0 44px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Що кажуть ті, хто вже дихав</h2>
+      <div id="reviews-quotes" style="display:flex;flex-direction:column;gap:22px;margin-bottom:48px">
+        <div data-i18n="review1" style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,2.6vw,28px);line-height:1.4;color:#eceff3">«Сьогодні я відчувала як ніколи Бога в собі»</div>
+        <div data-i18n="review2" style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,2.6vw,28px);line-height:1.4;color:#b9bfc9">«Немає минулого і майбутнього, тільки момент зараз»</div>
+        <div data-i18n="review3" style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,2.6vw,28px);line-height:1.4;color:#9aa1ac">«Було глибоко, а зараз тихо»</div>
       </div>
     </div>
     <div class="reveal" style="overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)">
@@ -193,34 +194,34 @@
   <!-- ================= КЛІМАКС ================= -->
   <section id="oplata" style="position:relative;z-index:3;padding:clamp(90px,13vh,150px) clamp(22px,5vw,60px);text-align:center">
     <div class="reveal" style="max-width:780px;margin:0 auto">
-      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(26px,4.4vw,48px);line-height:1.25;letter-spacing:.02em;margin:0 0 24px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Найбагатше місце на землі це кладовище нереалізованих мрій</h2>
-      <p style="font-size:15.5px;color:#b9bfc9;max-width:600px;margin:0 auto 26px;line-height:1.8">Люди роками носять у собі те, що так і не зробили зі страху. Я не хочу прожити це життя несправжньою. І хочу, щоб ти прожив хоча б один ковток тиші, з якої все починається.</p>
-      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,2.4vw,27px);color:#eceff3;margin-bottom:10px">Мрії збуваються, коли ми в тиші.</div>
-      <div class="offer-slot" data-note="Після оплати ти одразу потрапляєш у церемонію." style="width:min(92vw,520px);margin:36px auto 0"></div>
+      <h2 data-i18n="climaxTitle" style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(26px,4.4vw,48px);line-height:1.25;letter-spacing:.02em;margin:0 0 24px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Найбагатше місце на землі це кладовище нереалізованих мрій</h2>
+      <p data-i18n="climaxDesc" style="font-size:15.5px;color:#b9bfc9;max-width:600px;margin:0 auto 26px;line-height:1.8">Люди роками носять у собі те, що так і не зробили зі страху. Я не хочу прожити це життя несправжньою. І хочу, щоб ти прожив хоча б один ковток тиші, з якої все починається.</p>
+      <div data-i18n="climaxQuote" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,2.4vw,27px);color:#eceff3;margin-bottom:10px">Мрії збуваються, коли ми в тиші.</div>
+      <div class="offer-slot" data-note-i18n="climaxNote" style="width:min(92vw,520px);margin:36px auto 0"></div>
     </div>
   </section>
 
   <!-- ================= FOOTER ================= -->
   <footer style="position:relative;z-index:3;padding:44px 24px 90px;text-align:center;border-top:1px solid rgba(226,230,235,.08)">
     <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:14px">
-      <a id="link-privacy" href="#" style="color:#848b96;font-size:12px;letter-spacing:.06em;border-bottom:1px solid rgba(226,230,235,.2)">Політика конфіденційності</a>
-      <a id="link-offer" href="#" style="color:#848b96;font-size:12px;letter-spacing:.06em;border-bottom:1px solid rgba(226,230,235,.2)">Договір публічної оферти</a>
+      <a id="link-privacy" href="#" style="color:#848b96;font-size:12px;letter-spacing:.06em;border-bottom:1px solid rgba(226,230,235,.2)"><span data-i18n="footerPrivacy">Політика конфіденційності</span></a>
+      <a id="link-offer" href="#" style="color:#848b96;font-size:12px;letter-spacing:.06em;border-bottom:1px solid rgba(226,230,235,.2)"><span data-i18n="footerOffer">Договір публічної оферти</span></a>
     </div>
-    <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#565c66">Церемонія Тиші · Шлях Тиші · Юрій Кручін і команда</div>
+    <div data-i18n="footerCopyright" style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#565c66">Церемонія Тиші · Шлях Тиші · Юрій Кручін і команда</div>
   </footer>
 
   <!-- ================= MODAL: оплата ================= -->
   <div id="payModal" style="display:none;position:fixed;inset:0;background:rgba(3,3,4,.7);backdrop-filter:blur(10px);z-index:100;align-items:center;justify-content:center;padding:20px">
     <div style="background:linear-gradient(180deg,#101114,#08090a);border:1px solid rgba(226,230,235,.18);border-radius:28px;padding:40px 34px;max-width:440px;width:100%;position:relative;max-height:90vh;overflow:auto">
       <button id="payClose" style="position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(226,230,235,.25);background:rgba(226,230,235,.05);color:#e6e8ec;font-size:15px;cursor:pointer">✕</button>
-      <div style="font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:#848b96;margin-bottom:12px">Крок до тиші</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-weight:500;text-transform:uppercase;font-size:26px;letter-spacing:.08em;margin-bottom:22px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Залиш свої дані</div>
+      <div data-i18n="payStep" style="font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:#848b96;margin-bottom:12px">Крок до тиші</div>
+      <div data-i18n="payTitle" style="font-family:'Cormorant Garamond',serif;font-weight:500;text-transform:uppercase;font-size:26px;letter-spacing:.08em;margin-bottom:22px;background:linear-gradient(176deg,#f2f4f7,#8f97a3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Залиш свої дані</div>
       <form id="buyForm" style="display:flex;flex-direction:column;gap:14px">
-        <p style="position:absolute;left:-9999px"><label>Не заповнюй: <input name="bot-field"></label></p>
-        <div><label for="m-name" style="display:block;color:#b9bfc9;font-size:12px;letter-spacing:.08em;margin-bottom:6px">Імʼя</label><input type="text" id="m-name" name="name" placeholder="Як тебе звати" required="" style="width:100%;padding:14px 16px;background:rgba(226,230,235,.05);border:1px solid rgba(226,230,235,.16);border-radius:12px;color:#f1f3f6;font-family:'Manrope',sans-serif;font-size:15px"></div>
-        <div><label for="m-phone" style="display:block;color:#b9bfc9;font-size:12px;letter-spacing:.08em;margin-bottom:6px">Телефон</label><input type="tel" pattern="[0-9+\s\-()]{7,}" title="Введіть номер телефону" id="m-phone" name="phone" placeholder="+380 99 123 45 67" required="" style="width:100%;padding:14px 16px;background:rgba(226,230,235,.05);border:1px solid rgba(226,230,235,.16);border-radius:12px;color:#f1f3f6;font-family:'Manrope',sans-serif;font-size:15px"></div>
-        <div><label for="m-tg" style="display:block;color:#b9bfc9;font-size:12px;letter-spacing:.08em;margin-bottom:6px">Telegram-нік</label><input type="text" id="m-tg" name="telegram" placeholder="@your_nickname" required="" style="width:100%;padding:14px 16px;background:rgba(226,230,235,.05);border:1px solid rgba(226,230,235,.16);border-radius:12px;color:#f1f3f6;font-family:'Manrope',sans-serif;font-size:15px"></div>
-        <button type="submit" style="margin-top:8px;background:linear-gradient(180deg,#f4f6f8,#c9ced6);color:#0a0b0d;border:none;padding:17px;border-radius:999px;font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer">Перейти до оплати · €0.99</button>
+        <p style="position:absolute;left:-9999px"><label><span data-i18n="payBotLabel">Не заповнюй:</span> <input name="bot-field"></label></p>
+        <div><label for="m-name" style="display:block;color:#b9bfc9;font-size:12px;letter-spacing:.08em;margin-bottom:6px"><span data-i18n="payName">Імʼя</span></label><input type="text" id="m-name" name="name" data-i18n-ph="payNamePh" placeholder="Як тебе звати" required="" style="width:100%;padding:14px 16px;background:rgba(226,230,235,.05);border:1px solid rgba(226,230,235,.16);border-radius:12px;color:#f1f3f6;font-family:'Manrope',sans-serif;font-size:15px"></div>
+        <div><label for="m-phone" style="display:block;color:#b9bfc9;font-size:12px;letter-spacing:.08em;margin-bottom:6px"><span data-i18n="payPhone">Телефон</span></label><input type="tel" pattern="[0-9+\s\-()]{7,}" title="Введіть номер телефону" id="m-phone" name="phone" placeholder="+380 99 123 45 67" required="" style="width:100%;padding:14px 16px;background:rgba(226,230,235,.05);border:1px solid rgba(226,230,235,.16);border-radius:12px;color:#f1f3f6;font-family:'Manrope',sans-serif;font-size:15px"></div>
+        <div><label for="m-tg" style="display:block;color:#b9bfc9;font-size:12px;letter-spacing:.08em;margin-bottom:6px"><span data-i18n="payTg">Telegram-нік</span></label><input type="text" id="m-tg" name="telegram" placeholder="@your_nickname" required="" style="width:100%;padding:14px 16px;background:rgba(226,230,235,.05);border:1px solid rgba(226,230,235,.16);border-radius:12px;color:#f1f3f6;font-family:'Manrope',sans-serif;font-size:15px"></div>
+        <button type="submit" data-i18n="paySubmit" style="margin-top:8px;background:linear-gradient(180deg,#f4f6f8,#c9ced6);color:#0a0b0d;border:none;padding:17px;border-radius:999px;font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer">Перейти до оплати · €0.99</button>
       </form>
     </div>
   </div>
@@ -230,12 +231,10 @@
     <div style="background:linear-gradient(180deg,#101114,#08090a);border:1px solid rgba(226,230,235,.18);border-radius:28px;padding:40px 34px;max-width:700px;width:100%;position:relative;max-height:90vh;overflow:auto;text-align:left">
       <button id="legalClose" style="position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(226,230,235,.25);background:rgba(226,230,235,.05);color:#e6e8ec;font-size:15px;cursor:pointer">✕</button>
       <div id="legal-privacy" style="display:none">
-        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;color:#f1f3f6;margin-bottom:16px">Політика конфіденційності</h2>
-        <p style="color:#9aa1ac;font-size:14px;line-height:1.75">[Вставити текст політики конфіденційності і реквізити.]</p>
+        <div id="legal-privacy-content"></div>
       </div>
       <div id="legal-offer" style="display:none">
-        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;color:#f1f3f6;margin-bottom:16px">Договір публічної оферти</h2>
-        <p style="color:#9aa1ac;font-size:14px;line-height:1.75">[Вставити текст договору публічної оферти і реквізити.]</p>
+        <div id="legal-offer-content"></div>
       </div>
     </div>
   </div>
@@ -252,25 +251,101 @@
   const $ = (s)=>root.querySelector(s);
   const $$ = (s)=>Array.from(root.querySelectorAll(s));
 
+  /* ===== i18n ===== */
+  let currentLang = localStorage.getItem("site_lang") || ((navigator.language||"").startsWith("ru") ? "ru" : "ua");
+  let langData = null;
+
+  const applyI18n = (d)=>{
+    if(!d) return;
+    $$("[data-i18n]").forEach(el=>{
+      const key = el.getAttribute("data-i18n");
+      if(d[key] !== undefined) el.innerHTML = d[key];
+    });
+    $$("[data-i18n-ph]").forEach(el=>{
+      const key = el.getAttribute("data-i18n-ph");
+      if(d[key] !== undefined) el.placeholder = d[key];
+    });
+    $$("[data-i18n-title]").forEach(el=>{
+      const key = el.getAttribute("data-i18n-title");
+      if(d[key] !== undefined) el.title = d[key];
+    });
+    $$("[data-i18n-attr]").forEach(el=>{
+      const spec = el.getAttribute("data-i18n-attr");
+      const [attr, key] = spec.split(":");
+      if(d[key] !== undefined) el.setAttribute(attr, d[key]);
+    });
+    $$("[data-note-i18n]").forEach(el=>{
+      const key = el.getAttribute("data-note-i18n");
+      if(d[key] !== undefined) el.dataset.note = d[key];
+    });
+    renderOfferBlocks(d);
+    renderArrays(d);
+    updateLangSwitchUI();
+  };
+
+  const loadLang = async (lang)=>{
+    if(lang === "ua") return null;
+    try {
+      const r = await fetch("lang/ru.json");
+      if(!r.ok) return null;
+      return await r.json();
+    } catch(e){ return null; }
+  };
+
+  const switchLang = async (lang)=>{
+    currentLang = lang;
+    localStorage.setItem("site_lang", lang);
+    if(lang === "ru"){
+      if(!langData) langData = await loadLang("ru");
+      applyI18n(langData);
+    } else {
+      /* reload to restore UA defaults */
+      location.reload();
+      return;
+    }
+  };
+
+  const updateLangSwitchUI = ()=>{
+    const ru = $("#lang-ru");
+    const ua = $("#lang-ua");
+    if(currentLang === "ru"){
+      ru.style.cssText += "color:#050506;background:rgba(226,230,235,.85);font-weight:600";
+      ua.style.cssText += "color:#9aa1ac;background:transparent;font-weight:400";
+    } else {
+      ua.style.cssText += "color:#050506;background:rgba(226,230,235,.85);font-weight:600";
+      ru.style.cssText += "color:#9aa1ac;background:transparent;font-weight:400";
+    }
+  };
+
     const dot='<span style="flex:none;width:5px;height:5px;border-radius:50%;background:#e3e6ea;box-shadow:0 0 8px rgba(226,230,235,.7);margin-top:9px"></span>';
 
-    const offerHTML=(note)=>
-      `<div style="background:rgba(13,14,17,.72);backdrop-filter:blur(10px);border:1px solid rgba(226,230,235,.18);border-radius:26px;padding:26px 26px;display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center">`+
-      `<div style="display:inline-flex;align-items:baseline;gap:12px;color:#eceff3;font-size:14px"><span style="color:#848b96;text-decoration:line-through;font-size:19px">€9</span><b style="font-size:30px;color:#f4f6f8;font-weight:600">€0.99</b><span style="color:#9aa1ac">менше свічки в храмі</span></div>`+
-      `<button class="cta-btn" style="width:100%;display:inline-flex;align-items:center;justify-content:center;gap:14px;background:linear-gradient(180deg,#f4f6f8,#c9ced6);color:#0a0b0d;padding:19px 34px;border:none;border-radius:999px;font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;box-shadow:0 12px 30px rgba(226,230,235,.12);transition:.35s">Пройти церемонію <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#0a0b0d;color:#e3e6ea;font-size:14px">→</span></button>`+
-      `<div style="color:#848b96;font-size:11px;letter-spacing:.16em;text-transform:uppercase">імпульс це вже мова твоєї душі, не відкладай<div class="timer" style="font-size:26px;font-weight:600;letter-spacing:.1em;color:#f1f3f6;margin-top:6px">15 : 00</div></div>`+
-      (note?`<div style="color:#848b96;font-size:12.5px">${note}</div>`:``);
-    $$(".offer-slot").forEach(slot=>{ slot.innerHTML=offerHTML(slot.dataset.note||""); });
-    const heroSlot=$$(".offer-slot")[0];
-    if(heroSlot){
-      heroSlot.firstElementChild.insertAdjacentHTML("beforeend",
-        `<div style="border-top:1px solid rgba(226,230,235,.12);padding-top:14px;width:100%">`+
-        `<div style="color:#9aa1ac;font-size:10px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:10px">Що отримаєш після оплати</div>`+
-        `<div style="display:flex;flex-direction:column;gap:8px;text-align:left">`+
-        `<div style="display:flex;gap:10px;color:#ccd1d8;font-size:13.5px;line-height:1.5"><span style="flex:none;width:4px;height:4px;border-radius:50%;background:#e3e6ea;margin-top:8px"></span><span>коротке вступне і церемонію на 1,5 години, доступ одразу;</span></div>`+
-        `<div style="display:flex;gap:10px;color:#ccd1d8;font-size:13.5px;line-height:1.5"><span style="flex:none;width:4px;height:4px;border-radius:50%;background:#e3e6ea;margin-top:8px"></span><span>3 дари: урок «Свій вівтар», Отче наш з арамейської, вхід у живе поле.</span></div>`+
-        `</div></div>`);
-    }
+    const renderOfferBlocks = (d)=>{
+      const L = d || {};
+      const priceNote = L.offerPriceNote || "менше свічки в храмі";
+      const ctaText = L.offerCta || "Пройти церемонію";
+      const timerSub = L.offerTimerSub || "імпульс це вже мова твоєї душі, не відкладай";
+      const heroLabel = L.offerHeroLabel || "Що отримаєш після оплати";
+      const heroBul1 = L.offerHeroBul1 || "коротке вступне і церемонію на 1,5 години, доступ одразу;";
+      const heroBul2 = L.offerHeroBul2 || "3 дари: урок «Свій вівтар», Отче наш з арамейської, вхід у живе поле.";
+
+      const offerHTML=(note)=>
+        `<div style="background:rgba(13,14,17,.72);backdrop-filter:blur(10px);border:1px solid rgba(226,230,235,.18);border-radius:26px;padding:26px 26px;display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center">`+
+        `<div style="display:inline-flex;align-items:baseline;gap:12px;color:#eceff3;font-size:14px"><span style="color:#848b96;text-decoration:line-through;font-size:19px">€9</span><b style="font-size:30px;color:#f4f6f8;font-weight:600">€0.99</b><span style="color:#9aa1ac">${priceNote}</span></div>`+
+        `<button class="cta-btn" style="width:100%;display:inline-flex;align-items:center;justify-content:center;gap:14px;background:linear-gradient(180deg,#f4f6f8,#c9ced6);color:#0a0b0d;padding:19px 34px;border:none;border-radius:999px;font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;box-shadow:0 12px 30px rgba(226,230,235,.12);transition:.35s">${ctaText} <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#0a0b0d;color:#e3e6ea;font-size:14px">→</span></button>`+
+        `<div style="color:#848b96;font-size:11px;letter-spacing:.16em;text-transform:uppercase">${timerSub}<div class="timer" style="font-size:26px;font-weight:600;letter-spacing:.1em;color:#f1f3f6;margin-top:6px">15 : 00</div></div>`+
+        (note?`<div style="color:#848b96;font-size:12.5px">${note}</div>`:``);
+      $$(".offer-slot").forEach(slot=>{ slot.innerHTML=offerHTML(slot.dataset.note||""); });
+      const heroSlot=$$(".offer-slot")[0];
+      if(heroSlot){
+        heroSlot.firstElementChild.insertAdjacentHTML("beforeend",
+          `<div style="border-top:1px solid rgba(226,230,235,.12);padding-top:14px;width:100%">`+
+          `<div style="color:#9aa1ac;font-size:10px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:10px">${heroLabel}</div>`+
+          `<div style="display:flex;flex-direction:column;gap:8px;text-align:left">`+
+          `<div style="display:flex;gap:10px;color:#ccd1d8;font-size:13.5px;line-height:1.5"><span style="flex:none;width:4px;height:4px;border-radius:50%;background:#e3e6ea;margin-top:8px"></span><span>${heroBul1}</span></div>`+
+          `<div style="display:flex;gap:10px;color:#ccd1d8;font-size:13.5px;line-height:1.5"><span style="flex:none;width:4px;height:4px;border-radius:50%;background:#e3e6ea;margin-top:8px"></span><span>${heroBul2}</span></div>`+
+          `</div></div>`);
+      }
+    };
 
     const KEY="ceremony_impulse_timer";
     let end=localStorage.getItem(KEY);
@@ -283,51 +358,59 @@
     };
     upd(); _timerInt=setInterval(upd,1000);
 
-    // аудиторія
-    const AUD=[
-      "те, що раніше надихало і радувало, тепер іде на автоматі і виснажує",
-      "ти пройшов десятки практик і курсів, але в житті все повторюється за тим самим сценарієм",
-      "ти живеш з розуму, і в голові постійний шум, який не вимкнути",
-      "ти носиш маски і більше не памʼятаєш, хто ти без них",
-      "ти втомився підлаштовуватися і рятувати всіх, і сам уже не розумієш, чого хочеш",
-      "ти хочеш почати реалізовувати бажання душі, бо чергові цілі з голови вже не надихають",
-      "ти шукаєш наступний рівень глибини, бо всередині є відчуття, що можеш більше"
-    ];
-    $("#aud").innerHTML=AUD.map((t,i)=>`<div style="display:flex;gap:22px;align-items:center;background:rgba(13,14,17,.66);backdrop-filter:blur(8px);border:1px solid rgba(226,230,235,.1);border-radius:18px;padding:20px 26px"><span style="flex:none;font-family:'Cormorant Garamond',serif;font-style:italic;color:#9aa1ac;font-size:22px;min-width:32px">0${i+1}</span><span style="font-size:15px;line-height:1.55;color:#ccd1d8">${t}</span></div>`).join("");
+    const renderArrays = (d)=>{
+      const L = d || {};
 
-    // що всередині
-    const INS=[
-      ["Дихання із затримками","Дихальна практика, після якої всередині стає тихо, і в цій тиші ти чуєш сам себе."],
-      ["Мікрокосмічна орбіта","Увагою піднімаємо енергію по тілу, звʼязок із серцем і з маківкою, повернення у присутність."],
-      ["Зустріч із душею і родом","Тиха розмова зі своєю душею і робота з родовою системою, прощення і вдячність."],
-      ["Отче наш з арамейської","Молитва у перекладі з тієї мови, якою говорив Ісус. Глибоке завершення церемонії."]
-    ];
-    $("#inside").innerHTML=INS.map(([t,txt],i)=>`<div style="background:rgba(13,14,17,.66);backdrop-filter:blur(8px);border:1px solid rgba(226,230,235,.1);border-radius:20px;padding:28px 26px"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#9aa1ac;font-size:22px;margin-bottom:10px">0${i+1}</div><h4 style="color:#f1f3f6;font-size:17px;font-weight:500;margin-bottom:8px">${t}</h4><p style="color:#9aa1ac;font-size:14px;line-height:1.65">${txt}</p></div>`).join("");
+      const AUD_DEFAULT=[
+        "те, що раніше надихало і радувало, тепер іде на автоматі і виснажує",
+        "ти пройшов десятки практик і курсів, але в житті все повторюється за тим самим сценарієм",
+        "ти живеш з розуму, і в голові постійний шум, який не вимкнути",
+        "ти носиш маски і більше не памʼятаєш, хто ти без них",
+        "ти втомився підлаштовуватися і рятувати всіх, і сам уже не розумієш, чого хочеш",
+        "ти хочеш почати реалізовувати бажання душі, бо чергові цілі з голови вже не надихають",
+        "ти шукаєш наступний рівень глибини, бо всередині є відчуття, що можеш більше"
+      ];
+      const AUD = L.AUD || AUD_DEFAULT;
+      $("#aud").innerHTML=AUD.map((t,i)=>`<div style="display:flex;gap:22px;align-items:center;background:rgba(13,14,17,.66);backdrop-filter:blur(8px);border:1px solid rgba(226,230,235,.1);border-radius:18px;padding:20px 26px"><span style="flex:none;font-family:'Cormorant Garamond',serif;font-style:italic;color:#9aa1ac;font-size:22px;min-width:32px">0${i+1}</span><span style="font-size:15px;line-height:1.55;color:#ccd1d8">${t}</span></div>`).join("");
 
-    const AFTER=[
-      "вийшов із шуму і вперше за довгий час залишився в тиші всередині;",
-      "почув свій справжній голос, без масок і чужих ролей;",
-      "зустрівся зі своєю душею і почув, чого вона хоче;",
-      "зрозумів, як рухатися далі зі своїх справжніх бажань, без стресу, з тиші."
-    ];
-    $("#after").innerHTML=AFTER.map(t=>`<div style="display:flex;gap:12px;font-size:14.5px;line-height:1.6;color:#ccd1d8">${dot}<span>${t}</span></div>`).join("");
+      const INS_DEFAULT=[
+        ["Дихання із затримками","Дихальна практика, після якої всередині стає тихо, і в цій тиші ти чуєш сам себе."],
+        ["Мікрокосмічна орбіта","Увагою піднімаємо енергію по тілу, звʼязок із серцем і з маківкою, повернення у присутність."],
+        ["Зустріч із душею і родом","Тиха розмова зі своєю душею і робота з родовою системою, прощення і вдячність."],
+        ["Отче наш з арамейської","Молитва у перекладі з тієї мови, якою говорив Ісус. Глибоке завершення церемонії."]
+      ];
+      const INS = L.INS || INS_DEFAULT;
+      $("#inside").innerHTML=INS.map(([t,txt],i)=>`<div style="background:rgba(13,14,17,.66);backdrop-filter:blur(8px);border:1px solid rgba(226,230,235,.1);border-radius:20px;padding:28px 26px"><div style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#9aa1ac;font-size:22px;margin-bottom:10px">0${i+1}</div><h4 style="color:#f1f3f6;font-size:17px;font-weight:500;margin-bottom:8px">${t}</h4><p style="color:#9aa1ac;font-size:14px;line-height:1.65">${txt}</p></div>`).join("");
 
-    // кроки
-    const STEPS=[
-      ["Заходиш за символічною ціною","€0.99, менше однієї свічки в храмі по світу. Це історія про твій намір прийти до себе."],
-      ["Спершу коротке вступне","Десять хвилин, у яких я налаштовую тебе і розповідаю, чим життя з тиші відрізняється від життя з хаосу."],
-      ["Потім сама церемонія, 1,5 години","Проходиш удома, як зустріч із собою. Сядь зручно, дихай разом зі мною від початку до кінця."]
-    ];
-    $("#steps").innerHTML=STEPS.map(([t,txt],i)=>`<div style="display:flex;gap:20px;align-items:flex-start"><div style="flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(226,230,235,.35);color:#e6e8ec;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px">${i+1}</div><div><h4 style="color:#f1f3f6;font-size:16px;font-weight:500;margin-bottom:5px">${t}</h4><p style="color:#9aa1ac;font-size:14px;line-height:1.65">${txt}</p></div></div>`).join("");
+      const AFTER_DEFAULT=[
+        "вийшов із шуму і вперше за довгий час залишився в тиші всередині;",
+        "почув свій справжній голос, без масок і чужих ролей;",
+        "зустрівся зі своєю душею і почув, чого вона хоче;",
+        "зрозумів, як рухатися далі зі своїх справжніх бажань, без стресу, з тиші."
+      ];
+      const AFTER = L.AFTER || AFTER_DEFAULT;
+      $("#after").innerHTML=AFTER.map(t=>`<div style="display:flex;gap:12px;font-size:14.5px;line-height:1.6;color:#ccd1d8">${dot}<span>${t}</span></div>`).join("");
 
-    // Юра
-    const YURA=[
-      "20 років духовного шляху. З 2025 року відмовився від позиції вчителя і проводить публічну трансформацію.",
-      "1500 днів практики цвяхостояння поспіль, понад 1000 людей проведено через церемонії.",
-      "7-денний темний ретрит на самоті, тибетська традиція Бон.",
-      "У 2026 році знімає фільм про тишу через дихання для Каннського фестивалю."
-    ];
-    $("#yura-list").innerHTML=YURA.map(t=>`<div style="display:flex;gap:12px;font-size:14.5px;line-height:1.65;color:#ccd1d8">${dot}<span>${t}</span></div>`).join("");
+      const STEPS_DEFAULT=[
+        ["Заходиш за символічною ціною","€0.99, менше однієї свічки в храмі по світу. Це історія про твій намір прийти до себе."],
+        ["Спершу коротке вступне","Десять хвилин, у яких я налаштовую тебе і розповідаю, чим життя з тиші відрізняється від життя з хаосу."],
+        ["Потім сама церемонія, 1,5 години","Проходиш удома, як зустріч із собою. Сядь зручно, дихай разом зі мною від початку до кінця."]
+      ];
+      const STEPS = L.STEPS || STEPS_DEFAULT;
+      $("#steps").innerHTML=STEPS.map(([t,txt],i)=>`<div style="display:flex;gap:20px;align-items:flex-start"><div style="flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(226,230,235,.35);color:#e6e8ec;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px">${i+1}</div><div><h4 style="color:#f1f3f6;font-size:16px;font-weight:500;margin-bottom:5px">${t}</h4><p style="color:#9aa1ac;font-size:14px;line-height:1.65">${txt}</p></div></div>`).join("");
+
+      const YURA_DEFAULT=[
+        "20 років духовного шляху. З 2025 року відмовився від позиції вчителя і проводить публічну трансформацію.",
+        "1500 днів практики цвяхостояння поспіль, понад 1000 людей проведено через церемонії.",
+        "7-денний темний ретрит на самоті, тибетська традиція Бон.",
+        "У 2026 році знімає фільм про тишу через дихання для Каннського фестивалю."
+      ];
+      const YURA = L.YURA || YURA_DEFAULT;
+      $("#yura-list").innerHTML=YURA.map(t=>`<div style="display:flex;gap:12px;font-size:14.5px;line-height:1.65;color:#ccd1d8">${dot}<span>${t}</span></div>`).join("");
+    };
+
+    renderArrays({});
+    renderOfferBlocks({});
 
     // стрічка відгуків
     const track=$("#marquee-track");
@@ -347,9 +430,20 @@
     $("#payClose").addEventListener("click",closePay);
     pay.addEventListener("click",(e)=>{ if(e.target===pay) closePay(); });
 
-    // legal
+    // legal modals
     const legal=$("#legalModal");
-    const openLegal=(w)=>{ $("#legal-privacy").style.display=w==="privacy"?"block":"none"; $("#legal-offer").style.display=w==="offer"?"block":"none"; legal.style.display="flex"; document.body.style.overflow="hidden"; };
+    const openLegal=(w)=>{
+      if(w==="privacy"){
+        if(langData && langData.privacyContent) $("#legal-privacy-content").innerHTML=langData.privacyContent;
+        else $("#legal-privacy-content").innerHTML='<h2 style="font-family:\'Cormorant Garamond\',serif;font-weight:500;font-size:24px;color:#f1f3f6;margin-bottom:16px">Політика конфіденційності</h2><p style="color:#9aa1ac;font-size:14px;line-height:1.75">Власник персональних даних: <strong style="color:#ccd1d8">ФОП Кручин Юрій Борисович</strong>, РНОКПП 3161724638, м. Київ, вул. Ревуцького, 9, кв. 447. Email: academyofmasters888@gmail.com</p><p style="color:#9aa1ac;font-size:14px;line-height:1.75;margin-top:12px">Компанія обробляє персональні дані (ім\'я, телефон, нік у Telegram) з метою ідентифікації, надання послуг та зв\'язку з користувачем. Дані не передаються третім особам, крім випадків, передбачених законом, та платіжного сервісу WayForPay. Користувач може запросити зміну або видалення даних, написавши на academyofmasters888@gmail.com. Докладніше — у повній версії політики на сайті.</p>';
+      } else if(w==="offer"){
+        if(langData && langData.offerContent) $("#legal-offer-content").innerHTML=langData.offerContent;
+        else $("#legal-offer-content").innerHTML='<h2 style="font-family:\'Cormorant Garamond\',serif;font-weight:500;font-size:24px;color:#f1f3f6;margin-bottom:16px">Договір публічної оферти</h2><p style="color:#9aa1ac;font-size:14px;line-height:1.75"><strong style="color:#ccd1d8">Виконавець:</strong> ФОП Кручин Юрій Борисович, РНОКПП 3161724638</p><p style="color:#9aa1ac;font-size:14px;line-height:1.75;margin-top:8px"><strong style="color:#ccd1d8">Послуга:</strong> доступ до запису онлайн-практики «Церемонія Тиші» за символічну плату €0.99.</p><p style="color:#9aa1ac;font-size:14px;line-height:1.75;margin-top:8px">Оплата здійснюється через WayForPay. Доступ до матеріалів надається одразу після оплати. Повернення коштів можливий протягом 3 робочих днів після оплати за технічної неможливості надання послуги. Використання матеріалів дозволяється виключно для особистого користування. Докладні умови — у повній версії оферти на сайті.</p>';
+      }
+      $("#legal-privacy").style.display=w==="privacy"?"block":"none";
+      $("#legal-offer").style.display=w==="offer"?"block":"none";
+      legal.style.display="flex"; document.body.style.overflow="hidden";
+    };
     const closeLegal=()=>{ legal.style.display="none"; document.body.style.overflow=""; };
     $("#link-privacy").addEventListener("click",(e)=>{ e.preventDefault(); openLegal("privacy"); });
     $("#link-offer").addEventListener("click",(e)=>{ e.preventDefault(); openLegal("offer"); });
@@ -423,6 +517,15 @@
       window.addEventListener("keydown",(e)=>{ if(e.key==="Escape") closeTisha(); });
       $("#tishaCta").addEventListener("click",()=>{ closeTisha(); });
     }
+
+    // language switch
+    $("#lang-ru").addEventListener("click",(e)=>{ e.preventDefault(); switchLang("ru"); });
+    $("#lang-ua").addEventListener("click",(e)=>{ e.preventDefault(); if(currentLang!=="ua") switchLang("ua"); });
+    updateLangSwitchUI();
+
+    // auto-load Russian if browser language is ru
+    if(currentLang==="ru"){ loadLang("ru").then(d=>{ langData=d; applyI18n(d); }); }
+
   })();
 </script>
 
