@@ -8,3 +8,4 @@ node_modules/
 .env*
 _debug.txt
 *.pyc
+.playwright-mcp
