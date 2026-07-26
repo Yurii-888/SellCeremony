@@ -6,3 +6,6 @@ node_modules/
 
 .vercel
 .env*
+_decoded_*.html
+_debug.txt
+*.pyc
