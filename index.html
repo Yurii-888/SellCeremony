@@ -397,13 +397,13 @@
     window.addEventListener("touchstart",nudge,{once:true,passive:true});
     window.addEventListener("click",nudge,{once:true});
 
-    // звук
+    // звук — ТОЛЬКО по кнопке
     const sbtn=$("#sound-btn");
     const icoOff='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"></path><line x1="16" y1="9.5" x2="20.5" y2="14"></line><line x1="20.5" y1="9.5" x2="16" y2="14"></line></svg>';
     const icoOn='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path><path d="M18.5 6a9 9 0 0 1 0 12"></path></svg>';
     const postBg=(func)=>{ const f=$("#bg-video"); if(f && f.contentWindow) f.contentWindow.postMessage(JSON.stringify({event:"command",func:func,args:""}),"*"); };
-    let soundOn=false;
     if(sbtn){
+      let soundOn=false;
       sbtn.innerHTML=icoOff;
       sbtn.addEventListener("click",(e)=>{
         e.stopPropagation();
@@ -411,9 +411,8 @@
         if(soundOn){ postBg("unMute"); postBg("playVideo"); } else { postBg("mute"); }
         sbtn.innerHTML=soundOn?icoOn:icoOff;
       });
-      const enableSound=()=>{ if(soundOn) return; soundOn=true; postBg("unMute"); postBg("playVideo"); sbtn.innerHTML=icoOn; };
-      ["pointerdown","touchstart","keydown"].forEach(ev=>window.addEventListener(ev,enableSound,{once:true,passive:true}));
     }
+
     // Tisha panel
     const tm=$("#tishaModal");
     if(tm){
